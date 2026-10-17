@@ -5,6 +5,19 @@
  * src/i18n/ur.ts must have exactly the same keys (TypeScript will tell you if one is missing).
  * Placeholders like {count} are filled in by the code.
  */
+
+// Fields of study. Used for Rehbar cards, filters and the forms.
+const fields = {
+  engineering: 'Engineering',
+  medicine: 'Medicine',
+  business: 'Business',
+  cs: 'Computer Science',
+  arts: 'Arts & Humanities',
+  'social-sciences': 'Social Sciences',
+  law: 'Law',
+  sciences: 'Natural Sciences',
+}
+
 const en = {
   meta: {
     defaultTitle: "MyRehbar · Your guide to what's possible",
@@ -73,13 +86,126 @@ const en = {
   },
 
   forms: {
-    openForm: 'Open the form',
-    showHere: 'Fill it in on this page',
-    hide: 'Hide form',
-    notReady:
-      'This form is not set up yet. Please check back soon, or contact us.',
-    frameTitle: '{name} form',
-    note: 'The form is a Google Form. Your answers go only to the MyRehbar team.',
+    optional: 'optional',
+    submit: 'Send',
+    submitting: 'Sending…',
+    privacyNote:
+      'Your answers are sent securely and saved in a private sheet. Only the MyRehbar team can see them.',
+    privacyLink: 'Read our privacy note',
+    successTitle: 'Thank you! We got your answers.',
+    successText: 'Our team will read them and contact you soon. Please keep your phone or email handy.',
+    sendAnother: 'Send another response',
+    errorSummary: 'Please fix the highlighted questions.',
+    errorRequired: 'Please answer this question.',
+    errorTick: 'Please tick this box to continue.',
+    errorEmail: 'Please enter a valid email, like name@example.com.',
+    errorPhone: 'Please enter a valid phone number, like 0300 1234567.',
+    errorUrl: 'Please enter a full link starting with https://',
+    errorContact: 'Please give a phone number or an email, so we can reach you.',
+    errorTooLong: 'This is too long. Please keep it under {max} characters.',
+    errorSend: 'Sorry, your answers could not be sent. Please check your internet and try again.',
+    errorBusy: 'We are getting a lot of messages right now. Please try again in a minute.',
+    notReady: 'This form is not set up yet. Please check back soon, or contact us.',
+    charsLeft: '{count} characters left',
+  },
+
+  // Labels for every form question. `hint` is the small grey help text ('' for none).
+  formFields: {
+    fullName: { label: 'Full name', hint: '' },
+    age: { label: 'Age', hint: '' },
+    city: { label: 'City or area', hint: 'For example: Lyari, Karachi' },
+    school: { label: 'School or college', hint: '' },
+    studyLevel: { label: 'What are you studying now?', hint: '' },
+    phone: { label: 'Phone or WhatsApp number', hint: 'Only the MyRehbar team will see this.' },
+    email: { label: 'Email', hint: 'Only the MyRehbar team will see this.' },
+    contactOwner: { label: 'Whose phone or email is this?', hint: '' },
+    fieldInterest: { label: 'What would you like to study?', hint: '' },
+    scholarship: { label: 'Is there a scholarship you want help with?', hint: 'Leave this empty if you are not sure yet.' },
+    womanRehbar: { label: 'Would you like a woman Rehbar?', hint: '' },
+    internet: { label: 'How do you usually get online?', hint: '' },
+    needs: { label: 'What do you need help with?', hint: 'A few sentences is enough. You can write in English or Urdu.' },
+    guardianAware: { label: 'I am 18 or older, or a parent or teacher knows I am signing up.', hint: '' },
+    consent: { label: 'I agree that MyRehbar can save my answers and use them to contact me.', hint: '' },
+    rehbar: { label: 'Which Rehbar would you like?', hint: '' },
+    university: { label: 'University or organisation', hint: '' },
+    program: { label: 'Degree or program', hint: 'For example: BBA, MBBS, MSc Computer Science' },
+    country: { label: 'Country you live in', hint: '' },
+    field: { label: 'Field', hint: '' },
+    languages: { label: 'Languages you can mentor in', hint: 'For example: English, Urdu, Sindhi' },
+    hours: { label: 'How much time can you give?', hint: '' },
+    gender: { label: 'Gender', hint: 'This helps us match girls who ask for a woman Rehbar.' },
+    background: { label: 'Tell us about your background', hint: 'Where did you grow up? Why do you want to be a Rehbar?' },
+    linkedin: { label: 'LinkedIn profile', hint: 'Helps us check your background.' },
+    conduct: { label: 'I agree to follow the MyRehbar code of conduct and safeguarding rules.', hint: '' },
+    organisation: { label: 'Organisation', hint: '' },
+    topic: { label: 'What is this about?', hint: '' },
+    message: { label: 'Message', hint: '' },
+  },
+
+  // Answer choices. The order shown in the form is set in src/forms/schema.ts.
+  formOptions: {
+    age: {
+      under14: 'Under 14',
+      '14': '14',
+      '15': '15',
+      '16': '16',
+      '17': '17',
+      '18': '18',
+      '19': '19',
+      '20': '20',
+      over20: 'Over 20',
+    },
+    studyLevel: {
+      matric: 'Class 9–10 (Matric / O Levels)',
+      inter: 'Class 11–12 (Intermediate / A Levels)',
+      finished: 'Finished school or college',
+      university: 'At university',
+      other: 'Other',
+    },
+    contactOwner: {
+      mine: 'Mine',
+      parent: 'My parent’s or guardian’s',
+      teacher: 'My teacher’s',
+    },
+    fieldInterest: { ...fields, unsure: 'Not sure yet' },
+    field: fields,
+    womanRehbar: {
+      yes: 'Yes, please',
+      any: 'No preference',
+    },
+    internet: {
+      home: 'Internet at home',
+      phone: 'Only on a phone',
+      school: 'Only at school',
+      none: 'I usually have no internet',
+    },
+    hours: {
+      week1: 'About 1 hour per week',
+      week2: '2 hours or more per week',
+      month2: 'About 2 hours per month',
+    },
+    gender: {
+      woman: 'Woman',
+      man: 'Man',
+      none: 'Prefer not to say',
+    },
+    topic: {
+      school: 'Bring MyRehbar to my school',
+      ngo: 'NGO partnership',
+      embassy: 'Embassy or scholarship program',
+      donor: 'Donating or funding',
+      media: 'Media or press',
+      other: 'Something else',
+    },
+  },
+
+  request: {
+    title: 'Request a Rehbar',
+    intro:
+      'Tell us a little about yourself. Our team will check your request and connect you with the Rehbar safely.',
+    requesting: 'You are asking for',
+    changeRehbar: 'Choose a different Rehbar',
+    formTitle: 'Your details',
   },
 
   filters: {
@@ -116,16 +242,7 @@ const en = {
     notFoundGuide: 'We could not find this guide.',
   },
 
-  fields: {
-    engineering: 'Engineering',
-    medicine: 'Medicine',
-    business: 'Business',
-    cs: 'Computer Science',
-    arts: 'Arts & Humanities',
-    'social-sciences': 'Social Sciences',
-    law: 'Law',
-    sciences: 'Natural Sciences',
-  },
+  fields,
 
   levels: {
     undergraduate: 'Undergraduate',
@@ -171,11 +288,11 @@ const en = {
       },
     ],
     founderEyebrow: 'Why MyRehbar exists',
-    // TODO: replace with your real story, in your own words.
+    // Founder story. Shown on the Home and About pages.
     founderTitle: 'Someone showed me the door. Now we hold it open.',
     founderText: [
-      'My father drove a rickshaw in Karachi. I did not know that scholarships were real, or that they were for people like me.',
-      'Then a mentor sat with me and showed me what was possible. I applied, and I got a 100% scholarship to IBA Karachi.',
+      'My family could not afford big schools. So I never let myself dream of top universities. I thought they were for other people.',
+      'Then a mentor sat with me and told me what nobody had told me before: scholarships are real, and they are for students like me. I applied, and I got a 100% scholarship to IBA Karachi.',
       'MyRehbar exists so that every student gets that same conversation.',
     ],
     founderName: 'Founder, MyRehbar',
@@ -426,7 +543,7 @@ const en = {
       },
       {
         heading: 'Where it goes',
-        text: 'Our forms are Google Forms. Your answers are saved in a Google account owned by the MyRehbar team. Only the team can see them.',
+        text: 'Your answers are sent securely (encrypted) to a private Google Sheet owned by the MyRehbar team. Only the team can open it. The website itself does not keep a copy.',
       },
       {
         heading: 'How we use it',
@@ -455,7 +572,7 @@ const en = {
     quickLinks: 'Quick links',
     social: 'Follow us',
     madeIn: 'Made in Karachi',
-    privacyNote: 'No accounts, no tracking. Forms are handled by Google Forms.',
+    privacyNote: 'No accounts, no tracking. Form answers go to a private sheet only our team can see.',
     privacyLink: 'Read our privacy note',
     rights: '© {year} MyRehbar',
   },

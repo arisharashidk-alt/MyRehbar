@@ -29,6 +29,11 @@ export default {
       slate: '#5A6B65', // secondary text
       line: '#E2EAE6', // borders, dividers
       paper: '#FAFCFB', // page background
+      // Form errors only. #B42318 on white passes WCAG AA.
+      danger: {
+        DEFAULT: '#B42318',
+        50: '#FEF3F2',
+      },
     },
     // Type scale: 14 / 16 / 18 / 24 / 32 / 48
     fontSize: {

@@ -8,7 +8,6 @@ import { CheckList, StepList } from '../components/CheckList'
 import { EmptyState } from '../components/EmptyState'
 import { DeadlineText, LastVerified } from '../components/ScholarshipMeta'
 import { getScholarship } from '../data'
-import { forms, formLink } from '../config/forms'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useI18n } from '../i18n'
 
@@ -101,7 +100,7 @@ export default function ScholarshipDetail() {
               {t.scholarships.getHelpTitle}
             </h2>
             <p className="mt-2 text-slate">{t.scholarships.getHelpText}</p>
-            <Button href={formLink(forms.studentSignup, { scholarship: s.name })} size="lg" className="mt-6">
+            <Button to={`/students?scholarship=${s.slug}#signup`} size="lg" className="mt-6">
               {t.scholarships.getHelpCta}
             </Button>
           </section>

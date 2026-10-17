@@ -10,6 +10,18 @@ import type { Dictionary } from './en'
  * - Short UI strings below have a first-draft translation. Please review them too.
  * - Search this file for TODO-UR to see what is left.
  */
+
+const fields = {
+  engineering: 'انجینئرنگ',
+  medicine: 'میڈیسن',
+  business: 'بزنس',
+  cs: 'کمپیوٹر سائنس',
+  arts: 'آرٹس اور ہیومینیٹیز',
+  'social-sciences': 'سوشل سائنسز',
+  law: 'قانون',
+  sciences: 'سائنس',
+}
+
 const ur: Dictionary = {
   meta: {
     defaultTitle: 'مائی رہبر · آپ کا رہنما',
@@ -77,12 +89,139 @@ const ur: Dictionary = {
   },
 
   forms: {
-    openForm: 'فارم کھولیں',
-    showHere: 'اسی صفحے پر فارم بھریں',
-    hide: 'فارم چھپائیں',
+    optional: 'اختیاری',
+    submit: 'بھیجیں',
+    submitting: 'بھیجا جا رہا ہے…',
+    privacyNote:
+      'TODO-UR: Your answers are sent securely and saved in a private sheet. Only the MyRehbar team can see them.',
+    privacyLink: 'ہمارا رازداری نوٹ پڑھیں',
+    successTitle: 'شکریہ! ہمیں آپ کے جوابات مل گئے۔',
+    successText: 'TODO-UR: Our team will read them and contact you soon. Please keep your phone or email handy.',
+    sendAnother: 'ایک اور جواب بھیجیں',
+    errorSummary: 'براہِ کرم نشان زدہ سوالات درست کریں۔',
+    errorRequired: 'براہِ کرم اس سوال کا جواب دیں۔',
+    errorTick: 'آگے بڑھنے کے لیے یہ خانہ منتخب کریں۔',
+    errorEmail: 'TODO-UR: Please enter a valid email, like name@example.com.',
+    errorPhone: 'TODO-UR: Please enter a valid phone number, like 0300 1234567.',
+    errorUrl: 'TODO-UR: Please enter a full link starting with https://',
+    errorContact: 'TODO-UR: Please give a phone number or an email, so we can reach you.',
+    errorTooLong: 'TODO-UR: This is too long. Please keep it under {max} characters.',
+    errorSend: 'TODO-UR: Sorry, your answers could not be sent. Please check your internet and try again.',
+    errorBusy: 'TODO-UR: We are getting a lot of messages right now. Please try again in a minute.',
     notReady: 'TODO-UR: This form is not set up yet. Please check back soon, or contact us.',
-    frameTitle: '{name} فارم',
-    note: 'TODO-UR: The form is a Google Form. Your answers go only to the MyRehbar team.',
+    charsLeft: '{count} حروف باقی',
+  },
+
+  formFields: {
+    fullName: { label: 'پورا نام', hint: '' },
+    age: { label: 'عمر', hint: '' },
+    city: { label: 'شہر یا علاقہ', hint: 'مثال کے طور پر: لیاری، کراچی' },
+    school: { label: 'اسکول یا کالج', hint: '' },
+    studyLevel: { label: 'آپ ابھی کیا پڑھ رہے ہیں؟', hint: '' },
+    phone: { label: 'فون یا واٹس ایپ نمبر', hint: 'یہ صرف مائی رہبر کی ٹیم دیکھے گی۔' },
+    email: { label: 'ای میل', hint: 'یہ صرف مائی رہبر کی ٹیم دیکھے گی۔' },
+    contactOwner: { label: 'یہ فون یا ای میل کس کا ہے؟', hint: '' },
+    fieldInterest: { label: 'آپ کیا پڑھنا چاہتے ہیں؟', hint: '' },
+    scholarship: {
+      label: 'کیا کوئی خاص اسکالرشپ ہے جس میں مدد چاہیے؟',
+      hint: 'TODO-UR: Leave this empty if you are not sure yet.',
+    },
+    womanRehbar: { label: 'کیا آپ خاتون رہبر چاہتے ہیں؟', hint: '' },
+    internet: { label: 'آپ عام طور پر انٹرنیٹ کیسے استعمال کرتے ہیں؟', hint: '' },
+    needs: {
+      label: 'آپ کو کس چیز میں مدد چاہیے؟',
+      hint: 'TODO-UR: A few sentences is enough. You can write in English or Urdu.',
+    },
+    guardianAware: {
+      label: 'TODO-UR: I am 18 or older, or a parent or teacher knows I am signing up.',
+      hint: '',
+    },
+    consent: { label: 'TODO-UR: I agree that MyRehbar can save my answers and use them to contact me.', hint: '' },
+    rehbar: { label: 'آپ کس رہبر سے ملنا چاہتے ہیں؟', hint: '' },
+    university: { label: 'یونیورسٹی یا ادارہ', hint: '' },
+    program: { label: 'ڈگری یا پروگرام', hint: 'TODO-UR: For example: BBA, MBBS, MSc Computer Science' },
+    country: { label: 'آپ کس ملک میں رہتے ہیں؟', hint: '' },
+    field: { label: 'شعبہ', hint: '' },
+    languages: { label: 'زبانیں جن میں آپ رہنمائی کر سکتے ہیں', hint: 'TODO-UR: For example: English, Urdu, Sindhi' },
+    hours: { label: 'آپ کتنا وقت دے سکتے ہیں؟', hint: '' },
+    gender: { label: 'جنس', hint: 'TODO-UR: This helps us match girls who ask for a woman Rehbar.' },
+    background: {
+      label: 'اپنے پس منظر کے بارے میں بتائیں',
+      hint: 'TODO-UR: Where did you grow up? Why do you want to be a Rehbar?',
+    },
+    linkedin: { label: 'لنکڈ اِن پروفائل', hint: 'TODO-UR: Helps us check your background.' },
+    conduct: {
+      label: 'TODO-UR: I agree to follow the MyRehbar code of conduct and safeguarding rules.',
+      hint: '',
+    },
+    organisation: { label: 'ادارہ', hint: '' },
+    topic: { label: 'یہ کس بارے میں ہے؟', hint: '' },
+    message: { label: 'پیغام', hint: '' },
+  },
+
+  formOptions: {
+    age: {
+      under14: '14 سے کم',
+      '14': '14',
+      '15': '15',
+      '16': '16',
+      '17': '17',
+      '18': '18',
+      '19': '19',
+      '20': '20',
+      over20: '20 سے زیادہ',
+    },
+    studyLevel: {
+      matric: 'نویں–دسویں (میٹرک / او لیول)',
+      inter: 'گیارہویں–بارہویں (انٹر / اے لیول)',
+      finished: 'اسکول یا کالج مکمل',
+      university: 'یونیورسٹی میں',
+      other: 'دیگر',
+    },
+    contactOwner: {
+      mine: 'میرا',
+      parent: 'میرے والدین یا سرپرست کا',
+      teacher: 'میرے استاد کا',
+    },
+    fieldInterest: { ...fields, unsure: 'ابھی طے نہیں' },
+    field: fields,
+    womanRehbar: {
+      yes: 'جی ہاں',
+      any: 'کوئی ترجیح نہیں',
+    },
+    internet: {
+      home: 'گھر پر انٹرنیٹ',
+      phone: 'صرف فون پر',
+      school: 'صرف اسکول میں',
+      none: 'عام طور پر انٹرنیٹ نہیں',
+    },
+    hours: {
+      week1: 'ہفتے میں تقریباً 1 گھنٹہ',
+      week2: 'ہفتے میں 2 گھنٹے یا زیادہ',
+      month2: 'مہینے میں تقریباً 2 گھنٹے',
+    },
+    gender: {
+      woman: 'خاتون',
+      man: 'مرد',
+      none: 'بتانا نہیں چاہتے',
+    },
+    topic: {
+      school: 'میرے اسکول میں مائی رہبر',
+      ngo: 'این جی او شراکت',
+      embassy: 'سفارت خانہ یا اسکالرشپ پروگرام',
+      donor: 'عطیہ یا فنڈنگ',
+      media: 'میڈیا',
+      other: 'کچھ اور',
+    },
+  },
+
+  request: {
+    title: 'رہبر سے رابطے کی درخواست',
+    intro:
+      'TODO-UR: Tell us a little about yourself. Our team will check your request and connect you with the Rehbar safely.',
+    requesting: 'آپ اس رہبر سے ملنا چاہتے ہیں',
+    changeRehbar: 'کوئی اور رہبر منتخب کریں',
+    formTitle: 'آپ کی معلومات',
   },
 
   filters: {
@@ -119,16 +258,7 @@ const ur: Dictionary = {
     notFoundGuide: 'یہ رہنمائی نہیں ملی۔',
   },
 
-  fields: {
-    engineering: 'انجینئرنگ',
-    medicine: 'میڈیسن',
-    business: 'بزنس',
-    cs: 'کمپیوٹر سائنس',
-    arts: 'آرٹس اور ہیومینیٹیز',
-    'social-sciences': 'سوشل سائنسز',
-    law: 'قانون',
-    sciences: 'سائنس',
-  },
+  fields,
 
   levels: {
     undergraduate: 'انڈرگریجویٹ',
@@ -176,8 +306,8 @@ const ur: Dictionary = {
     founderEyebrow: 'مائی رہبر کیوں',
     founderTitle: 'TODO-UR: Someone showed me the door. Now we hold it open.',
     founderText: [
-      'TODO-UR: My father drove a rickshaw in Karachi. I did not know that scholarships were real, or that they were for people like me.',
-      'TODO-UR: Then a mentor sat with me and showed me what was possible. I applied, and I got a 100% scholarship to IBA Karachi.',
+      'TODO-UR: My family could not afford big schools. So I never let myself dream of top universities. I thought they were for other people.',
+      'TODO-UR: Then a mentor sat with me and told me what nobody had told me before: scholarships are real, and they are for students like me. I applied, and I got a 100% scholarship to IBA Karachi.',
       'TODO-UR: MyRehbar exists so that every student gets that same conversation.',
     ],
     founderName: 'بانی، مائی رہبر',
@@ -435,7 +565,7 @@ const ur: Dictionary = {
       },
       {
         heading: 'معلومات کہاں جاتی ہیں',
-        text: 'TODO-UR: Our forms are Google Forms. Your answers are saved in a Google account owned by the MyRehbar team. Only the team can see them.',
+        text: 'TODO-UR: Your answers are sent securely (encrypted) to a private Google Sheet owned by the MyRehbar team. Only the team can open it. The website itself does not keep a copy.',
       },
       {
         heading: 'ہم اسے کیسے استعمال کرتے ہیں',
@@ -464,7 +594,7 @@ const ur: Dictionary = {
     quickLinks: 'اہم لنکس',
     social: 'ہمیں فالو کریں',
     madeIn: 'کراچی میں بنایا گیا',
-    privacyNote: 'TODO-UR: No accounts, no tracking. Forms are handled by Google Forms.',
+    privacyNote: 'TODO-UR: No accounts, no tracking. Form answers go to a private sheet only our team can see.',
     privacyLink: 'ہمارا رازداری نوٹ پڑھیں',
     rights: '© {year} مائی رہبر',
   },

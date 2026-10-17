@@ -10,12 +10,12 @@ function PageLoading() {
 
 export function Layout() {
   const { t } = useI18n()
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
-  // Start each new page at the top.
+  // Start each new page at the top (unless the link points to a #section).
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    if (!hash) window.scrollTo(0, 0)
+  }, [pathname, hash])
 
   return (
     <div className="flex min-h-screen flex-col">

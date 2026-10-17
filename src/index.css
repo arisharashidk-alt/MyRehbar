@@ -22,6 +22,11 @@
     @apply text-mint-700 underline-offset-4;
   }
 
+  /* Leave room for the sticky header when jumping to #anchors. */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+
   /* One visible focus style for every interactive element (keyboard users). */
   :focus-visible {
     outline: 3px solid theme('colors.mint.700');
@@ -38,6 +43,11 @@
   /* Letter-spacing breaks joined Urdu letters, so switch it off everywhere in Urdu. */
   html[lang='ur'] * {
     letter-spacing: 0 !important;
+  }
+
+  /* Nastaliq is tall: give Urdu text more room than Tailwind's default line-heights. */
+  html[lang='ur'] :is(p, li, label, legend, dt, dd, summary, a, span) {
+    line-height: 1.9;
   }
 
   html[lang='ur'] h1,

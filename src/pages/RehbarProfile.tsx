@@ -7,7 +7,6 @@ import { Button } from '../components/Button'
 import { CheckList } from '../components/CheckList'
 import { EmptyState } from '../components/EmptyState'
 import { getRehbar } from '../data'
-import { forms, formLink } from '../config/forms'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { fmt, useI18n } from '../i18n'
 
@@ -27,7 +26,6 @@ export default function RehbarProfile() {
 
   const place = [rehbar.city, rehbar.country].filter(Boolean).join(', ')
   const story = rehbar.fullStory && rehbar.fullStory.length > 0 ? rehbar.fullStory : [rehbar.story].filter(Boolean)
-  const requestUrl = formLink(forms.mentorshipRequest, { rehbarName: rehbar.name })
 
   return (
     <div className="container-page py-8 md:py-12">
@@ -109,7 +107,7 @@ export default function RehbarProfile() {
                 </div>
               )}
             </dl>
-            <Button href={requestUrl} className="mt-6 w-full" size="lg">
+            <Button to={`/request?rehbar=${rehbar.slug}`} className="mt-6 w-full" size="lg">
               {t.common.requestRehbar}
             </Button>
             <p className="mt-4 flex gap-2 text-sm text-slate">

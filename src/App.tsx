@@ -15,6 +15,7 @@ const ResourceDetail = lazy(() => import('./pages/ResourceDetail'))
 const Schools = lazy(() => import('./pages/Schools'))
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
+const Request = lazy(() => import('./pages/Request'))
 const Privacy = lazy(() => import('./pages/Privacy'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="schools" element={<Schools />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="request" element={<Request />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="*" element={<NotFound />} />
       </Route>

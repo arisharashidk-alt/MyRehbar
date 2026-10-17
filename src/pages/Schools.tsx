@@ -5,7 +5,6 @@ import { SectionHeading } from '../components/SectionHeading'
 import { Card } from '../components/Card'
 import { Timeline } from '../components/Timeline'
 import { Button } from '../components/Button'
-import { forms, formLink } from '../config/forms'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useI18n } from '../i18n'
 
@@ -48,7 +47,7 @@ export default function Schools() {
             {t.schools.ctaTitle}
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-lg text-slate">{t.schools.ctaText}</p>
-          <Button href={formLink(forms.contact, { topic: 'School program' })} size="lg" className="mt-8">
+          <Button to="/contact?topic=school" size="lg" className="mt-8">
             {t.schools.ctaButton}
           </Button>
         </div>

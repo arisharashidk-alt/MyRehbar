@@ -4,8 +4,8 @@ import { Section } from '../components/Section'
 import { SectionHeading } from '../components/SectionHeading'
 import { Card } from '../components/Card'
 import { CheckList } from '../components/CheckList'
-import { FormEmbed } from '../components/FormEmbed'
-import { forms } from '../config/forms'
+import { MyRehbarForm } from '../components/MyRehbarForm'
+import { rehbarForm } from '../forms/schema'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useI18n } from '../i18n'
 
@@ -63,7 +63,7 @@ export default function BecomeRehbar() {
       <Section labelledBy="apply">
         <SectionHeading id="apply" title={t.become.applyTitle} intro={t.become.applyText} />
         <div className="max-w-3xl">
-          <FormEmbed form={forms.rehbarApplication} name={t.become.applyTitle} />
+          <MyRehbarForm def={rehbarForm} />
         </div>
       </Section>
     </>

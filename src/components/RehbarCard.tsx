@@ -5,7 +5,6 @@ import { Card } from './Card'
 import { Tag } from './Tag'
 import { Avatar } from './Avatar'
 import { Button } from './Button'
-import { forms, formLink } from '../config/forms'
 import { useI18n } from '../i18n'
 
 export function RehbarCard({ rehbar, headingLevel = 2 }: { rehbar: Rehbar; headingLevel?: 2 | 3 }) {
@@ -55,7 +54,7 @@ export function RehbarCard({ rehbar, headingLevel = 2 }: { rehbar: Rehbar; headi
 
       {/* Contact always goes through the request form. Never show emails or phone numbers. */}
       <div className="mt-auto flex flex-wrap gap-2 pt-6">
-        <Button href={formLink(forms.mentorshipRequest, { rehbarName: rehbar.name })} variant="secondary" size="sm">
+        <Button to={`/request?rehbar=${rehbar.slug}`} variant="secondary" size="sm">
           {t.common.requestRehbar}
         </Button>
         <Button to={`/rehbars/${rehbar.slug}`} variant="ghost" size="sm">

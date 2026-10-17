@@ -1,9 +1,16 @@
-import { Quote } from 'lucide-react'
+import { Linkedin, Quote } from 'lucide-react'
+import { Avatar } from './Avatar'
+import { site } from '../config/site'
 import { useI18n } from '../i18n'
 
-/** Founder story block, used on Home and About. Text lives in src/i18n/en.ts -> home.founder* */
+/**
+ * Founder story block, used on Home and About.
+ * Story text: src/i18n/en.ts -> home.founder*. Name, photo and LinkedIn: src/config/site.ts -> founder.
+ */
 export function FounderStory({ showHeading = true }: { showHeading?: boolean }) {
   const { t } = useI18n()
+  const { name, photo, linkedin } = site.founder
+
   return (
     <div className="grid gap-8 rounded-card border border-line bg-white p-6 md:grid-cols-[auto_1fr] md:p-12">
       <div className="flex h-14 w-14 items-center justify-center rounded-full bg-mint-50 text-mint-700">
@@ -21,7 +28,28 @@ export function FounderStory({ showHeading = true }: { showHeading?: boolean }) 
             <p key={p}>{p}</p>
           ))}
         </div>
-        <p className="mt-6 font-semibold text-mint-900">{t.home.founderName}</p>
+
+        <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-line pt-6">
+          {photo && <Avatar name={name || 'Founder'} photo={photo} size={72} />}
+          <div>
+            {name && <p className="text-lg font-semibold text-mint-900">{name}</p>}
+            <p className={name ? 'text-slate' : 'font-semibold text-mint-900'}>{t.home.founderName}</p>
+          </div>
+          {linkedin && (
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-tap items-center gap-2 rounded-xl border border-line px-4 font-semibold no-underline transition duration-150 hover:bg-mint-50 sm:ms-auto"
+            >
+              <Linkedin aria-hidden size={18} strokeWidth={1.5} />
+              LinkedIn
+              <span className="sr-only">
+                {name ? ` — ${name}` : ''} {t.common.opensNewTab}
+              </span>
+            </a>
+          )}
+        </div>
       </div>
     </div>
   )

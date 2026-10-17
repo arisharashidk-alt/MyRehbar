@@ -6,7 +6,7 @@ Mentors are called **Rehbars** (رہبر, "guide").
 > Students don't fail because they lack money. They rule themselves out because nobody told them funding exists.
 
 This is a **static website**: there is no backend, no database, no login and no paid service.
-All content lives in files in this repo, all forms are Google Forms, and it deploys free on Vercel.
+All content lives in files in this repo, form answers go to a private Google Sheet (through a small free Google Apps Script), and it deploys free on Vercel.
 
 ---
 
@@ -27,7 +27,7 @@ npm run preview    # serve the built /dist locally
 npm run lint       # ESLint
 ```
 
-Notes that only show in `npm run dev` (never on the live site) point to things you still need to set up, for example missing form links or impact numbers.
+Notes that only show in `npm run dev` (never on the live site) point to things you still need to set up, for example the form link or impact numbers.
 
 ---
 
@@ -36,7 +36,7 @@ Notes that only show in `npm run dev` (never on the live site) point to things y
 ```
 src/
   config/
-    forms.ts        Google Form links and pre-fill entry ids
+    forms.ts        The one form link (your Apps Script URL)
     site.ts         Domain, contact email, social links
   data/
     rehbars.json    Mentors (edit this to add a Rehbar)
@@ -44,15 +44,21 @@ src/
     stats.ts        Impact numbers on the home page
     index.ts        Loads and cleans the JSON so bad entries never crash a page
   content/          The guides on /resources (one file per guide)
+  forms/
+    schema.ts       The questions in each form
+    validate.ts     Checks answers before sending
+    submit.ts       Sends answers to the Apps Script
   i18n/
     en.ts           All English text on the site
     ur.ts           Urdu text (same keys)
-  components/       Reusable UI (Button, Card, Tag, FilterBar, FormEmbed, Logo, …)
+  components/       Reusable UI (Button, Card, Tag, FilterBar, MyRehbarForm, Logo, …)
   pages/            One file per page
   types.ts          Rehbar, Scholarship and Resource types
 tailwind.config.js  Design tokens: every colour, font size and radius
 public/             favicon, OG image, robots.txt, sitemap.xml
-vercel.json         Makes deep links like /rehbars/sample-rehbar-1 work
+vercel.json         Deep links (/rehbars/…) + security headers
+google-apps-script/
+  Code.gs           Paste into your Google Sheet; saves form answers
 design/             Original logo sheet (not used by the build)
 ```
 
@@ -98,40 +104,70 @@ Edit `src/data/stats.ts`. Leave a value as `null` to hide it. If every value is 
 
 ---
 
-## 7. Set up the Google Forms
+## 7. Forms
 
-You need four forms. Responses go to a Google Sheet in your Google account.
+The site has four MyRehbar-styled forms. All answers go to **one private Google Sheet**, with one tab per form:
 
-| Key in `forms.ts`    | Used on                                      | Suggested questions |
-|----------------------|----------------------------------------------|---------------------|
-| `studentSignup`      | /students, "Get a Rehbar to help you apply"  | Name, age, city, school/college, phone or email of student **or parent**, field of interest, "Which scholarship do you want help with?" (short answer), "Would you prefer a woman Rehbar?", "Does a parent or teacher know you are signing up?" |
-| `rehbarApplication`  | /become-a-rehbar                              | Name, email, university, country, field, background, languages, hours per week, agreement to the code of conduct and safeguarding rules |
-| `mentorshipRequest`  | "Request this Rehbar" buttons                 | Student name, contact, "Which Rehbar would you like?" (short answer), what they need help with |
-| `contact`            | /contact, /schools, About "Partner with us"   | Name, organisation, email, "What is this about?" (short answer), message |
+| Form | Page | Sheet tab |
+|---|---|---|
+| Student sign-up | `/students` (and "Get a Rehbar to help you apply" on scholarship pages) | Students |
+| Request a Rehbar | `/request?rehbar=…` ("Request this Rehbar" buttons) | Rehbar requests |
+| Become a Rehbar | `/become-a-rehbar` | Rehbar applications |
+| Contact / partner | `/contact` (and "Bring MyRehbar to your school") | Contact |
 
-**Steps for each form:**
+### How it works
 
-1. Go to [forms.google.com](https://forms.google.com) and create the form.
-2. In **Responses**, click the Sheets icon to link a Google Sheet.
-3. Click **Send** → the link icon (🔗) → copy the link. Use the **long** link ending in `/viewform`, not the `forms.gle` short link (pre-fill and embedding only work with the long one).
-4. Paste it as `url` in `src/config/forms.ts`.
+```
+Browser ──HTTPS──▶ Google Apps Script (your account) ──▶ private Google Sheet
+```
 
-**Pre-fill entry ids** (so "Request this Rehbar" fills in the Rehbar's name automatically):
+- The website sends answers to a small script that runs in **your** Google account ([google-apps-script/Code.gs](google-apps-script/Code.gs)).
+- The script can **only add rows**. It has no way to read the sheet back, so the script link is safe to have in the website code. It is not a password.
+- The sheet stays private (sharing: **Restricted**). Only people you share it with can open it.
+- Nothing is saved in the visitor's browser. Answers are cleared from the page as soon as they are sent.
+- Spam protection: a hidden trap field for bots, a minimum time to fill in the form, and a limit of 30 answers per minute.
+- Security: answers can't run as spreadsheet formulas, unknown questions are ignored, and every answer has a length limit. The site also sends strict security headers (see `vercel.json`).
 
-1. In the form editor, click **⋮** (top right) → **Get pre-filled link**.
-2. Type anything (e.g. `test`) into the question you want to pre-fill, e.g. "Which Rehbar would you like?".
-3. Click **Get link** → **Copy link**. It looks like
-   `https://docs.google.com/forms/d/e/1FAIpQL…/viewform?usp=pp_url&entry.1234567890=test`
-4. Copy the `entry.1234567890` part and paste it into the matching key in `forms.ts`:
-   - `mentorshipRequest.prefill.rehbarName`
-   - `studentSignup.prefill.scholarship` (optional)
-   - `contact.prefill.topic` (optional; the Schools page pre-fills "School program")
+### Set it up (about 10 minutes, once)
 
-Pre-fill keys that are still placeholders are ignored, so the plain form opens instead. Until a form's `url` is filled in, the on-page form box shows "This form is not set up yet".
+1. **Create the sheet.** Go to [sheets.google.com](https://sheets.google.com), create a blank spreadsheet and name it, e.g., "MyRehbar responses". Leave sharing as **Restricted**.
+2. **Add the script.** In the sheet, click **Extensions → Apps Script**. Delete everything in `Code.gs`, paste in the whole of [google-apps-script/Code.gs](google-apps-script/Code.gs), then click **Save** (💾).
+3. **Create the tabs.** In the toolbar's function menu, choose **`setup`** and click **Run**. Google will ask for permission:
+   - Choose your account → **Advanced** → **Go to (project name)** → **Allow**.
+   - "Unverified app" is normal: it's your own script, and only you are using it.
+   - Back in the sheet you'll now see four tabs with headers.
+4. **Publish it.** Click **Deploy → New deployment** → the gear icon → **Web app**, and set:
+   - **Execute as:** *Me*
+   - **Who has access:** *Anyone*
 
-**Privacy tips:** in each form's settings, turn **off** "Collect email addresses" unless you need it, and don't ask for more than you need. The privacy page (`/privacy`, text in `src/i18n/en.ts` → `privacy`) describes what you collect, so keep it accurate.
+   Click **Deploy**. "Anyone" lets visitors *submit* without a Google account. It does **not** let them see the sheet.
+5. **Copy the Web app URL.** It looks like `https://script.google.com/macros/s/AKfycb…/exec`.
+6. **Paste it** into [src/config/forms.ts](src/config/forms.ts):
+   ```ts
+   export const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycb…/exec'
+   ```
+7. Run `npm run dev`, submit a test answer on `/contact`, and check that a new row appears in the **Contact** tab. Then commit and push.
 
----
+**Get notified of new answers:** in the sheet, use **Tools → Notification settings → Edit notifications** and choose "Any changes are made". You'll get an email saying the sheet changed, without the answers in it.
+
+### Changing the questions
+
+The questions are listed in two places that must match:
+
+1. [src/forms/schema.ts](src/forms/schema.ts): the website side (type, required, order).
+2. The `FORMS` list in [google-apps-script/Code.gs](google-apps-script/Code.gs): the sheet side (column headers).
+
+Question text goes in `src/i18n/en.ts` → `formFields` and `formOptions` (plus `ur.ts`). After you edit `Code.gs` in Apps Script, publish a new version: **Deploy → Manage deployments → ✏️ → Version: New version → Deploy**. The URL stays the same.
+
+If you add a column to an existing tab, add the header in the sheet by hand too, or delete the tab and run `setup` again (only on an empty tab!).
+
+### Keeping the data safe
+
+- Turn on **2-Step Verification** on the Google account that owns the sheet.
+- Never share the sheet with "Anyone with the link", and never paste the sheet's link into this project.
+- Share it only with team members who need it, and remove people who leave.
+- Delete answers you no longer need. If someone asks you to delete their data, delete their row.
+- If you think the script URL is being abused (lots of spam), create a **new deployment** in Apps Script, paste the new URL into `forms.ts`, and archive the old deployment.
 
 ## 8. Deploy free on Vercel
 
@@ -195,8 +231,7 @@ No tracking is included. If you want simple, cookie-free visitor counts:
 
 ## 10. Before launch checklist
 
-- [ ] Replace founder story text in `src/i18n/en.ts` → `home.founderTitle` / `home.founderText`
-- [ ] Paste all four Google Form URLs and the pre-fill entry ids into `src/config/forms.ts`
+- [ ] Set up the Google Sheet + Apps Script and paste the URL into `src/config/forms.ts` (section 7)
 - [ ] Replace sample Rehbars with real ones (with permission), or remove them
 - [ ] Verify every scholarship, set `lastVerified`, remove `sample`
 - [ ] Review and un-draft the guides in `src/content/`
@@ -213,4 +248,4 @@ The code is set up so these can be added without a rewrite:
 
 - **A real database** (e.g. Supabase free tier): replace the imports in `src/data/index.ts` with fetch calls. Pages use only `rehbars`, `scholarships`, `getRehbar` and `getScholarship`, so the change stays in one file.
 - **Logins and dashboards:** add routes in `src/App.tsx`. The `Layout` already wraps every page.
-- **Automatic matching and session booking:** would replace the Google Forms behind `src/config/forms.ts`.
+- **Automatic matching and session booking:** `src/forms/submit.ts` is the only place answers are sent, so it can point at a real backend later.

@@ -20,7 +20,7 @@ interface LinkProps extends BaseProps {
   to: string
   href?: never
 }
-/** External link (opens in a new tab), e.g. a Google Form */
+/** External link (opens in a new tab), e.g. an official scholarship website */
 interface AnchorProps extends BaseProps {
   href: string
   to?: never
