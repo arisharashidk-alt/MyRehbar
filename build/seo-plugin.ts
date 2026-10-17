@@ -7,6 +7,9 @@
  *   - sitemap.xml listing every page (with "last verified" dates where we have them)
  *   - structured data (JSON-LD) for the organisation and for each university
  *
+ * Every page has its own HTML file (served by Vercel's cleanUrls), and 404.html handles
+ * unknown addresses, so no catch-all rewrite is needed.
+ *
  * It runs automatically during `npm run build`. Nothing to maintain: new scholarships,
  * universities, Rehbars and guides in the data files are picked up on the next build.
  */
@@ -168,6 +171,11 @@ export function seoPages(): Plugin {
         else this.emitFile({ type: 'asset', fileName: `${page.path.slice(1)}.html`, source: html })
       }
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(list) })
+      // Vercel serves 404.html (with a 404 status) for any address that has no page.
+      // It loads the same app, which shows the friendly "page not found" screen.
+      const notFound = pageHtml(template, { path: '/404', title: en.notFound.title, description: en.notFound.text })
+        .replace('<meta charset="UTF-8" />', '<meta charset="UTF-8" />\n    <meta name="robots" content="noindex" />')
+      this.emitFile({ type: 'asset', fileName: '404.html', source: notFound })
     },
   }
 }
