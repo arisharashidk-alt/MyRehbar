@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#FAFCFB"/>
+  <circle cx="1080" cy="560" r="220" fill="#EEF8F3"/>
+  <circle cx="1080" cy="560" r="120" fill="#CDEFE0"/>
+  <g transform="translate(90 90)" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="16">
+    <path d="M18 100 L60 58 L102 100" stroke="#1F7A5C"/>
+    <path d="M36 48 L60 24 L84 48" stroke="#3EB489"/>
+  </g>
+  <text x="230" y="172" font-family="Inter, Helvetica, Arial, sans-serif" font-size="64" font-weight="700" letter-spacing="-1.5" fill="#0F3D2E">My<tspan fill="#1F7A5C">Rehbar</tspan></text>
+  <text x="90" y="340" font-family="Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="-1" fill="#0F3D2E">Students don't fail because they lack money.</text>
+  <text x="90" y="404" font-family="Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="-1" fill="#1F7A5C">They rule themselves out because</text>
+  <text x="90" y="468" font-family="Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" letter-spacing="-1" fill="#1F7A5C">nobody told them funding exists.</text>
+  <text x="90" y="560" font-family="Inter, Helvetica, Arial, sans-serif" font-size="26" fill="#5A6B65">myrehbar.org · Your guide to what's possible.</text>
+</svg>

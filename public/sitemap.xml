@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Static sitemap. Add new pages here by hand. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://myrehbar.org/</loc></url>
+  <url><loc>https://myrehbar.org/rehbars</loc></url>
+  <url><loc>https://myrehbar.org/scholarships</loc></url>
+  <url><loc>https://myrehbar.org/students</loc></url>
+  <url><loc>https://myrehbar.org/become-a-rehbar</loc></url>
+  <url><loc>https://myrehbar.org/resources</loc></url>
+  <url><loc>https://myrehbar.org/schools</loc></url>
+  <url><loc>https://myrehbar.org/about</loc></url>
+  <url><loc>https://myrehbar.org/contact</loc></url>
+  <url><loc>https://myrehbar.org/privacy</loc></url>
+</urlset>

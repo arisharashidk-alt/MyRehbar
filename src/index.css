@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper font-sans text-base text-ink antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-bold tracking-heading text-mint-900;
+  }
+
+  a {
+    @apply text-mint-700 underline-offset-4;
+  }
+
+  /* One visible focus style for every interactive element (keyboard users). */
+  :focus-visible {
+    outline: 3px solid theme('colors.mint.700');
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  /* ---------- Urdu (RTL) ---------- */
+  html[lang='ur'] body {
+    @apply font-urdu;
+    line-height: 2;
+  }
+
+  /* Letter-spacing breaks joined Urdu letters, so switch it off everywhere in Urdu. */
+  html[lang='ur'] * {
+    letter-spacing: 0 !important;
+  }
+
+  html[lang='ur'] h1,
+  html[lang='ur'] h2,
+  html[lang='ur'] h3 {
+    line-height: 1.9;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6;
+  }
+
+  /* 48px on mobile, 80px tablet, 96px desktop */
+  .section {
+    @apply py-12 md:py-20 lg:py-24;
+  }
+
+  .prose-simple p {
+    @apply mb-4 text-lg text-ink;
+  }
+
+  .prose-simple ul {
+    @apply mb-4 list-disc space-y-2 ps-6 text-lg;
+  }
+
+  .prose-simple ol {
+    @apply mb-4 list-decimal space-y-2 ps-6 text-lg;
+  }
+}
+
+/* Subtle motion only, and none at all if the person asked for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
