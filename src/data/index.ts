@@ -39,6 +39,7 @@ function toRehbar(raw: Raw, index: number): Rehbar | null {
     university: str(raw.university),
     country: str(raw.country),
     city: str(raw.city) || undefined,
+    age: typeof raw.age === 'number' && raw.age >= 10 && raw.age < 100 ? Math.round(raw.age) : undefined,
     field: oneOf(raw.field, FIELDS) ? raw.field : 'arts',
     program: str(raw.program) || undefined,
     story: str(raw.story),

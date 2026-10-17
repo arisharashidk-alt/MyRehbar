@@ -75,6 +75,8 @@ const en = {
     languages: 'Languages',
     field: 'Field',
     availability: 'Availability',
+    age: 'Age',
+    yearsOld: '{count} years old',
     back: 'Back',
     backToRehbars: 'All Rehbars',
     backToScholarships: 'All scholarships',

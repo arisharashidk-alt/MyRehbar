@@ -1,12 +1,51 @@
 {
-  "_comment": "Add real Rehbars only, with their written permission. Never add phone numbers or emails here: this file is public. Field ids: engineering, medicine, business, cs, arts, social-sciences, law, sciences. linkedin: optional public profile link (https://...linkedin.com/in/...). helpsWith ids: choosing-field, applications, essays, interviews, english-tests, university-life.",
+  "_comment": "Add real Rehbars only, with their written permission. Never add phone numbers or emails here: this file is public. Field ids: engineering, medicine, business, cs, arts, social-sciences, law, sciences. linkedin: optional public profile link (https://...linkedin.com/in/...). helpsWith ids: choosing-field, applications, essays, interviews, english-tests, university-life. age: a number, e.g. 24 (update it each year).",
   "rehbars": [
+    {
+      "slug": "arisha-rashid-khan",
+      "name": "Arisha Rashid Khan",
+      "photo": "/founder.jpg",
+      "university": "IBA Karachi",
+      "country": "Pakistan",
+      "city": "Karachi",
+      "age": 25,
+      "field": "cs",
+      "program": "Artificial Intelligence Engineer · Founder, MyRehbar",
+      "story": "Earned a 100% scholarship to IBA Karachi after a mentor showed me scholarships were real. Now I help students find the same path.",
+      "fullStory": [
+        "My family could not afford big schools, so I never let myself dream of top universities. I thought they were for other people.",
+        "Then a mentor told me what nobody had told me before: scholarships are real, and they are for students like me. I applied, and I got a 100% scholarship to IBA Karachi.",
+        "Today I work as an Artificial Intelligence Engineer, and I started MyRehbar so every student gets that same conversation. I am especially happy to help girls and their families feel confident about applying."
+      ],
+      "languages": [
+        "English",
+        "Urdu"
+      ],
+      "tags": [
+        "Woman Rehbar",
+        "Scholarship recipient",
+        "Founder"
+      ],
+      "woman": true,
+      "scholarshipRecipient": true,
+      "helpsWith": [
+        "choosing-field",
+        "applications",
+        "essays",
+        "interviews",
+        "university-life"
+      ],
+      "linkedin": "https://www.linkedin.com/in/arisha-rashid/",
+      "featured": true
+    },
     {
       "slug": "daniyal-ali",
       "name": "Daniyal Ali",
       "photo": "",
       "university": "IBA Karachi",
       "country": "Pakistan",
+      "city": "Karachi",
+      "age": 24,
       "field": "business",
       "program": "BBA graduate",
       "story": "IBA BBA graduate who can show you what studying business at a top Pakistani university is really like, and how to get there.",
@@ -28,7 +67,8 @@
         "university-life"
       ],
       "linkedin": "https://pk.linkedin.com/in/daniyalali10",
-      "featured": true
+      "featured": true,
+      "woman": false
     },
     {
       "slug": "aman-razi-kidwai",
@@ -36,6 +76,8 @@
       "photo": "",
       "university": "Veem Software",
       "country": "Pakistan",
+      "city": "Karachi",
+      "age": 24,
       "field": "cs",
       "program": "Product Marketing · Computer Science, IBA",
       "story": "Studied Computer Science at IBA and now works in product marketing at Veem Software, bringing together tech and business.",
@@ -58,7 +100,7 @@
         "university-life"
       ],
       "linkedin": "https://pk.linkedin.com/in/aman-kidwai",
-      "featured": true
+      "woman": false
     },
     {
       "slug": "adeen-atif",
@@ -66,6 +108,8 @@
       "photo": "",
       "university": "Ticket Wala",
       "country": "Pakistan",
+      "city": "Karachi",
+      "age": 24,
       "field": "cs",
       "program": "AI and Product Head · Computer Science, IBA",
       "story": "IBA Computer Science graduate who now leads AI and product at Ticket Wala.",
@@ -78,6 +122,7 @@
         "Urdu"
       ],
       "tags": [
+        "Woman Rehbar",
         "IBA graduate",
         "Works in AI"
       ],
@@ -88,7 +133,8 @@
         "university-life"
       ],
       "linkedin": "https://sa.linkedin.com/in/adeen-atif",
-      "featured": true
+      "featured": true,
+      "woman": true
     }
   ]
 }

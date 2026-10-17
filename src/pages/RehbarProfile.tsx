@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Clock, Languages, Linkedin, MapPin, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, Cake, Clock, Languages, Linkedin, MapPin, ShieldCheck } from 'lucide-react'
 import { Avatar } from '../components/Avatar'
 import { Tag } from '../components/Tag'
 import { Card } from '../components/Card'
@@ -88,6 +88,15 @@ export default function RehbarProfile() {
         <aside>
           <Card className="lg:sticky lg:top-24">
             <dl className="space-y-4">
+              {rehbar.age && (
+                <div className="flex gap-3">
+                  <Cake aria-hidden size={20} strokeWidth={1.5} className="mt-0.5 text-mint-700" />
+                  <div>
+                    <dt className="text-sm text-slate">{t.common.age}</dt>
+                    <dd className="font-semibold">{fmt(t.common.yearsOld, { count: rehbar.age })}</dd>
+                  </div>
+                </div>
+              )}
               {rehbar.availability && (
                 <div className="flex gap-3">
                   <Clock aria-hidden size={20} strokeWidth={1.5} className="mt-0.5 text-mint-700" />

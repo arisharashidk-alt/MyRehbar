@@ -5,12 +5,13 @@ import { Card } from './Card'
 import { Tag } from './Tag'
 import { Avatar } from './Avatar'
 import { Button } from './Button'
-import { useI18n } from '../i18n'
+import { fmt, useI18n } from '../i18n'
 
 export function RehbarCard({ rehbar, headingLevel = 2 }: { rehbar: Rehbar; headingLevel?: 2 | 3 }) {
   const { t } = useI18n()
   const Heading = headingLevel === 2 ? 'h2' : 'h3'
   const place = [rehbar.city, rehbar.country].filter(Boolean).join(', ')
+  const age = rehbar.age ? fmt(t.common.yearsOld, { count: rehbar.age }) : ''
 
   return (
     <Card as="article" interactive className="flex h-full flex-col">
@@ -23,10 +24,10 @@ export function RehbarCard({ rehbar, headingLevel = 2 }: { rehbar: Rehbar; headi
             </Link>
           </Heading>
           {rehbar.university && <p className="text-sm text-slate">{rehbar.university}</p>}
-          {place && (
+          {(place || age) && (
             <p className="mt-1 flex items-center gap-1 text-sm text-slate">
               <MapPin aria-hidden size={14} strokeWidth={1.5} />
-              {place}
+              {[place, age].filter(Boolean).join(' · ')}
             </p>
           )}
         </div>

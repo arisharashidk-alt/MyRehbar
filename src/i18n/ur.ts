@@ -78,6 +78,8 @@ const ur: Dictionary = {
     languages: 'زبانیں',
     field: 'شعبہ',
     availability: 'دستیابی',
+    age: 'عمر',
+    yearsOld: '{count} سال',
     back: 'واپس',
     backToRehbars: 'تمام رہبر',
     backToScholarships: 'تمام اسکالرشپس',

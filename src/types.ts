@@ -35,6 +35,8 @@ export interface Rehbar {
   country: string
   /** City, optional, e.g. "Karachi" */
   city?: string
+  /** Age in years, optional. Remember to update it each year. */
+  age?: number
   field: FieldId
   /** Program or subject, e.g. "BBA" or "MSc Computer Science" */
   program?: string
