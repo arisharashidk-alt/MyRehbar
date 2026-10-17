@@ -660,8 +660,8 @@ const en = {
         text: 'If you are under 18, please sign up with your parent or a teacher knowing. Sessions for students under 18 happen in groups or with supervision.',
       },
       {
-        heading: 'Cookies and tracking',
-        text: 'This website does not use advertising cookies or tracking. It only remembers your language choice (English or Urdu) on your device.',
+        heading: 'Cookies and visitor counts',
+        text: 'This website uses no cookies and no advertising trackers. We count visits with Vercel Web Analytics, which records which pages are viewed and the type of device, but not who you are and not what you type. Your browser only remembers your language choice (English or Urdu).',
       },
       {
         heading: 'Delete your data',
@@ -675,7 +675,7 @@ const en = {
     social: 'Follow us',
     madeIn: 'Made in Karachi',
     email: 'Email us',
-    privacyNote: 'No accounts, no tracking. Form answers go to a private sheet only our team can see.',
+    privacyNote: 'No accounts, no cookies, no ad tracking. Form answers go to a private sheet only our team can see.',
     privacyLink: 'Read our privacy note',
     rights: '© {year} MyRehbar',
   },

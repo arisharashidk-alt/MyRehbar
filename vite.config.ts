@@ -2,6 +2,7 @@ import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import scholarships from './src/data/scholarships.json'
 import universities from './src/data/universities.json'
+import { seoPages } from './build/seo-plugin'
 
 /**
  * Publishes the scholarship and university data as plain files:
@@ -24,5 +25,5 @@ function publishData(): Plugin {
 
 // Static build only. Output goes to /dist, which Vercel serves as plain files.
 export default defineConfig({
-  plugins: [react(), publishData()],
+  plugins: [react(), publishData(), seoPages()],
 })

@@ -682,8 +682,8 @@ const ur: Dictionary = {
         text: 'TODO-UR: If you are under 18, please sign up with your parent or a teacher knowing. Sessions for students under 18 happen in groups or with supervision.',
       },
       {
-        heading: 'کوکیز اور ٹریکنگ',
-        text: 'TODO-UR: This website does not use advertising cookies or tracking. It only remembers your language choice (English or Urdu) on your device.',
+        heading: 'کوکیز اور وزٹرز کی گنتی',
+        text: 'TODO-UR: This website uses no cookies and no advertising trackers. We count visits with Vercel Web Analytics, which records which pages are viewed and the type of device, but not who you are and not what you type. Your browser only remembers your language choice (English or Urdu).',
       },
       {
         heading: 'اپنا ڈیٹا حذف کروائیں',
@@ -697,7 +697,7 @@ const ur: Dictionary = {
     social: 'ہمیں فالو کریں',
     madeIn: 'کراچی میں بنایا گیا',
     email: 'ہمیں ای میل کریں',
-    privacyNote: 'TODO-UR: No accounts, no tracking. Form answers go to a private sheet only our team can see.',
+    privacyNote: 'TODO-UR: No accounts, no cookies, no ad tracking. Form answers go to a private sheet only our team can see.',
     privacyLink: 'ہمارا رازداری نوٹ پڑھیں',
     rights: '© {year} مائی رہبر',
   },

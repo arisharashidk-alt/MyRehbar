@@ -57,7 +57,8 @@ src/
   pages/            One file per page
   types.ts          Rehbar, Scholarship and Resource types
 tailwind.config.js  Design tokens: every colour, font size and radius
-public/             favicon, OG image, robots.txt, sitemap.xml
+public/             favicon, OG image, robots.txt
+build/seo-plugin.ts Per-page titles/descriptions, sitemap.xml, structured data (runs on build)
 vercel.json         Deep links (/rehbars/…) + security headers
 scripts/
   check.mjs         Link/scholarship checker you run by hand (npm run check)
@@ -283,12 +284,31 @@ If you add a column to an existing tab, add the header in the sheet by hand too,
 
 If you use a different domain, update `src/config/site.ts`, the URLs in `index.html`, `public/robots.txt` and `public/sitemap.xml`.
 
-### Optional: Vercel Web Analytics
+### Visitor numbers (Vercel Web Analytics)
 
-No tracking is included. If you want simple, cookie-free visitor counts:
-1. In Vercel → project → **Analytics** → enable.
-2. `npm install @vercel/analytics`, then in `src/main.tsx` add `import { Analytics } from '@vercel/analytics/react'` and render `<Analytics />` next to `<App />`.
-3. To remove it later, delete those two lines and uninstall the package. Update the privacy page if you turn it on.
+The site counts visits with **Vercel Web Analytics**: no cookies, no personal data. Only the page path is sent; search words and filters (`?q=…`, `?live=…`) are removed first (see `src/main.tsx`).
+
+**Turn it on once:** Vercel → your project → **Analytics** tab → **Enable**. Data appears after the next deploy, within a few minutes of the first visits. You'll see visitors, top pages, countries, devices and where visitors came from (Google, WhatsApp, LinkedIn…).
+
+The free Hobby plan includes Web Analytics with a monthly event limit; check the current limit on Vercel's pricing page. If you outgrow it, upgrade with the rest of the Vercel plan.
+
+**To remove it:** delete the `<Analytics />` component and its import in `src/main.tsx`, run `npm uninstall @vercel/analytics`, and update the privacy text (`privacy.sections` in `src/i18n/en.ts`).
+
+### Showing up in Google and Bing
+
+Every build automatically creates:
+- **A page for every address** (each scholarship, university, Rehbar and guide) with its own title, description and canonical link, so Google results and WhatsApp/LinkedIn previews show the right text (`build/seo-plugin.ts`).
+- **`sitemap.xml`** listing every page, rebuilt each time you add data.
+- **Structured data** describing MyRehbar and each university, which helps Google understand the pages.
+
+**One-time setup** (you):
+1. **Google Search Console** (search.google.com/search-console) → **Add property** → **Domain** → `myrehbar.org`. Google gives you a **TXT record**. In Namecheap → **Advanced DNS** → **Add New Record** → **TXT Record**, Host `@`, Value = the text Google gave you → ✓. Back in Search Console, click **Verify** (it can take up to an hour).
+2. In Search Console → **Sitemaps** → enter `sitemap.xml` → **Submit**.
+3. **Bing Webmaster Tools** (bing.com/webmasters) → **Import from Google Search Console**. This also covers DuckDuckGo and Yahoo.
+
+Search Console then shows which searches find you, how often you appear, and how many people click. New sites usually start appearing within a few days to a few weeks.
+
+**What helps you rank:** links from other sites (school, NGO, university society pages, your LinkedIn and social profiles), sharing pages on WhatsApp and social media, and keeping the information accurate and current.
 
 ---
 
