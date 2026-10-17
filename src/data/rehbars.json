@@ -1,124 +1,94 @@
 {
-  "_comment": "TODO: Replace these SAMPLE entries with real Rehbars (with their written permission). Never add phone numbers or emails here: this file is public. Field ids: engineering, medicine, business, cs, arts, social-sciences, law, sciences. helpsWith ids: choosing-field, applications, essays, interviews, english-tests, university-life. Remove \"sample\": true once an entry is real.",
+  "_comment": "Add real Rehbars only, with their written permission. Never add phone numbers or emails here: this file is public. Field ids: engineering, medicine, business, cs, arts, social-sciences, law, sciences. linkedin: optional public profile link (https://...linkedin.com/in/...). helpsWith ids: choosing-field, applications, essays, interviews, english-tests, university-life.",
   "rehbars": [
     {
-      "slug": "sample-rehbar-1",
-      "name": "Sample Rehbar 1",
+      "slug": "daniyal-ali",
+      "name": "Daniyal Ali",
       "photo": "",
-      "university": "Sample University, Karachi",
+      "university": "IBA Karachi",
       "country": "Pakistan",
-      "city": "Karachi",
       "field": "business",
-      "program": "BBA",
-      "story": "Placeholder: grew up in Karachi and was the first in the family to go to university.",
+      "program": "BBA graduate",
+      "story": "IBA BBA graduate who can show you what studying business at a top Pakistani university is really like, and how to get there.",
       "fullStory": [
-        "Placeholder story. Replace this with the Rehbar's own words about where they grew up and how they got to university.",
-        "Placeholder: what helped them, and what they wish someone had told them earlier."
+        "Daniyal completed a BBA at IBA Karachi, one of Pakistan's leading business schools.",
+        "If you are thinking about business, finance or management, Daniyal can help you understand your options, prepare your application, and know what to expect once you get in."
       ],
-      "languages": ["English", "Urdu"],
-      "tags": ["First-generation student", "Scholarship recipient"],
-      "woman": false,
-      "scholarshipRecipient": true,
-      "helpsWith": ["choosing-field", "applications", "interviews"],
-      "availability": "1 hour per week",
-      "featured": true,
-      "sample": true
+      "languages": [
+        "English",
+        "Urdu"
+      ],
+      "tags": [
+        "IBA graduate"
+      ],
+      "helpsWith": [
+        "choosing-field",
+        "applications",
+        "interviews",
+        "university-life"
+      ],
+      "linkedin": "https://pk.linkedin.com/in/daniyalali10",
+      "featured": true
     },
     {
-      "slug": "sample-rehbar-2",
-      "name": "Sample Rehbar 2",
+      "slug": "aman-razi-kidwai",
+      "name": "Aman Razi Kidwai",
       "photo": "",
-      "university": "Sample University, United Kingdom",
-      "country": "United Kingdom",
-      "field": "medicine",
-      "program": "MBBS",
-      "story": "Placeholder: studied at a government school and now studies medicine abroad on a scholarship.",
-      "fullStory": [
-        "Placeholder story. Replace this with the Rehbar's own words.",
-        "Placeholder: why they want to help girls from similar backgrounds."
-      ],
-      "languages": ["English", "Urdu", "Sindhi"],
-      "tags": ["Woman Rehbar", "Scholarship recipient", "Studying abroad"],
-      "woman": true,
-      "scholarshipRecipient": true,
-      "helpsWith": ["applications", "essays", "english-tests"],
-      "availability": "1 hour per week",
-      "featured": true,
-      "sample": true
-    },
-    {
-      "slug": "sample-rehbar-3",
-      "name": "Sample Rehbar 3",
-      "photo": "",
-      "university": "Sample Engineering University, Lahore",
+      "university": "Veem Software",
       "country": "Pakistan",
-      "city": "Lahore",
-      "field": "engineering",
-      "program": "BE Electrical Engineering",
-      "story": "Placeholder: worked part-time through college and found a need-based scholarship.",
-      "languages": ["English", "Urdu", "Punjabi"],
-      "tags": ["First-generation student"],
-      "woman": false,
-      "scholarshipRecipient": false,
-      "helpsWith": ["choosing-field", "university-life"],
-      "availability": "2 hours per month",
-      "sample": true
-    },
-    {
-      "slug": "sample-rehbar-4",
-      "name": "Sample Rehbar 4",
-      "photo": "",
-      "university": "Sample University, United States",
-      "country": "United States",
       "field": "cs",
-      "program": "BS Computer Science",
-      "story": "Placeholder: from Lyari, now studying computer science abroad on full funding.",
+      "program": "Product Marketing · Computer Science, IBA",
+      "story": "Studied Computer Science at IBA and now works in product marketing at Veem Software, bringing together tech and business.",
       "fullStory": [
-        "Placeholder story. Replace this with the Rehbar's own words."
+        "Aman studied Computer Science at IBA Karachi and now works in Product Marketing at Veem Software.",
+        "Aman's path shows that a computer science degree can lead to many kinds of careers, not only coding. Aman can help you choose a field, plan your applications and think about where your degree can take you."
       ],
-      "languages": ["English", "Urdu", "Balochi"],
-      "tags": ["Woman Rehbar", "First-generation student", "Scholarship recipient"],
-      "woman": true,
-      "scholarshipRecipient": true,
-      "helpsWith": ["applications", "essays", "interviews", "english-tests"],
-      "availability": "1 hour per week",
-      "featured": true,
-      "sample": true
+      "languages": [
+        "English",
+        "Urdu"
+      ],
+      "tags": [
+        "IBA graduate",
+        "Works in tech"
+      ],
+      "helpsWith": [
+        "choosing-field",
+        "applications",
+        "essays",
+        "university-life"
+      ],
+      "linkedin": "https://pk.linkedin.com/in/aman-kidwai",
+      "featured": true
     },
     {
-      "slug": "sample-rehbar-5",
-      "name": "Sample Rehbar 5",
+      "slug": "adeen-atif",
+      "name": "Adeen Atif",
       "photo": "",
-      "university": "Sample University, Germany",
-      "country": "Germany",
-      "field": "sciences",
-      "program": "MSc Physics",
-      "story": "Placeholder: moved from a small town to study a master's degree in Europe.",
-      "languages": ["English", "Urdu", "Pashto"],
-      "tags": ["Scholarship recipient", "Studying abroad"],
-      "woman": false,
-      "scholarshipRecipient": true,
-      "helpsWith": ["applications", "university-life"],
-      "availability": "1 hour per week",
-      "sample": true
-    },
-    {
-      "slug": "sample-rehbar-6",
-      "name": "Sample Rehbar 6",
-      "photo": "",
-      "university": "Sample University, Islamabad",
+      "university": "Ticket Wala",
       "country": "Pakistan",
-      "city": "Islamabad",
-      "field": "social-sciences",
-      "program": "BSc Economics",
-      "story": "Placeholder: convinced her family that university was safe, and now helps others do the same.",
-      "languages": ["English", "Urdu"],
-      "tags": ["Woman Rehbar", "First-generation student"],
-      "woman": true,
-      "scholarshipRecipient": false,
-      "helpsWith": ["choosing-field", "essays"],
-      "availability": "1 hour per week",
-      "sample": true
+      "field": "cs",
+      "program": "AI and Product Head · Computer Science, IBA",
+      "story": "IBA Computer Science graduate who now leads AI and product at Ticket Wala.",
+      "fullStory": [
+        "Adeen studied Computer Science at IBA Karachi and is now the AI and Product Head at Ticket Wala.",
+        "If you are curious about computer science, artificial intelligence or building technology products, Adeen can help you understand the path, choose the right degree and prepare strong applications."
+      ],
+      "languages": [
+        "English",
+        "Urdu"
+      ],
+      "tags": [
+        "IBA graduate",
+        "Works in AI"
+      ],
+      "helpsWith": [
+        "choosing-field",
+        "applications",
+        "interviews",
+        "university-life"
+      ],
+      "linkedin": "https://sa.linkedin.com/in/adeen-atif",
+      "featured": true
     }
   ]
 }

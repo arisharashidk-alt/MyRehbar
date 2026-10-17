@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Clock, Languages, MapPin, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, Clock, Languages, Linkedin, MapPin, ShieldCheck } from 'lucide-react'
 import { Avatar } from '../components/Avatar'
 import { Tag } from '../components/Tag'
 import { Card } from '../components/Card'
@@ -110,6 +110,12 @@ export default function RehbarProfile() {
             <Button to={`/request?rehbar=${rehbar.slug}`} className="mt-6 w-full" size="lg">
               {t.common.requestRehbar}
             </Button>
+            {/* LinkedIn is shown for credibility only. Mentoring requests still go through the form. */}
+            {rehbar.linkedin && (
+              <Button href={rehbar.linkedin} variant="secondary" className="mt-3 w-full" icon={<Linkedin aria-hidden size={18} strokeWidth={1.5} />}>
+                LinkedIn
+              </Button>
+            )}
             <p className="mt-4 flex gap-2 text-sm text-slate">
               <ShieldCheck aria-hidden size={18} strokeWidth={1.5} className="shrink-0 text-mint-700" />
               {t.rehbars.requestNote}

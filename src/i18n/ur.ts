@@ -449,6 +449,7 @@ const ur: Dictionary = {
     ],
     applyTitle: 'رہبر بننے کے لیے درخواست دیں',
     applyText: 'TODO-UR: Tell us about yourself. We review every application and reply by email.',
+    questions: 'رہبر بننے کے بارے میں سوالات؟ ہمیں ای میل کریں:',
   },
 
   resources: {
@@ -585,7 +586,7 @@ const ur: Dictionary = {
       },
       {
         heading: 'اپنا ڈیٹا حذف کروائیں',
-        text: 'TODO-UR: You can ask us to delete your form answers at any time. Use the contact form and we will do it.',
+        text: 'TODO-UR: You can ask us to delete your form answers at any time. Email teammyrehbar@gmail.com or use the contact form, and we will do it.',
       },
     ],
   },
@@ -594,6 +595,7 @@ const ur: Dictionary = {
     quickLinks: 'اہم لنکس',
     social: 'ہمیں فالو کریں',
     madeIn: 'کراچی میں بنایا گیا',
+    email: 'ہمیں ای میل کریں',
     privacyNote: 'TODO-UR: No accounts, no tracking. Form answers go to a private sheet only our team can see.',
     privacyLink: 'ہمارا رازداری نوٹ پڑھیں',
     rights: '© {year} مائی رہبر',

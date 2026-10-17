@@ -434,6 +434,7 @@ const en = {
     ],
     applyTitle: 'Apply to be a Rehbar',
     applyText: 'Tell us about yourself. We review every application and reply by email.',
+    questions: 'Questions about becoming a Rehbar? Email us at',
   },
 
   resources: {
@@ -563,7 +564,7 @@ const en = {
       },
       {
         heading: 'Delete your data',
-        text: 'You can ask us to delete your form answers at any time. Use the contact form and we will do it.',
+        text: 'You can ask us to delete your form answers at any time. Email teammyrehbar@gmail.com or use the contact form, and we will do it.',
       },
     ],
   },
@@ -572,6 +573,7 @@ const en = {
     quickLinks: 'Quick links',
     social: 'Follow us',
     madeIn: 'Made in Karachi',
+    email: 'Email us',
     privacyNote: 'No accounts, no tracking. Form answers go to a private sheet only our team can see.',
     privacyLink: 'Read our privacy note',
     rights: '© {year} MyRehbar',

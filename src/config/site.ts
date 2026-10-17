@@ -7,9 +7,9 @@ export const site = {
   url: 'https://myrehbar.org',
   tagline: "Your guide to what's possible.",
 
-  // TODO: replace with your real public contact email, or leave empty ('') to hide it.
-  // This is the organisation's email. Never put a mentor's personal email anywhere on the site.
-  contactEmail: '',
+  // The organisation's public email (shown on Contact, Become a Rehbar and in the footer).
+  // Never put a mentor's personal email anywhere on the site.
+  contactEmail: 'teammyrehbar@gmail.com',
 
   // Founder details shown with the founder story (Home and About pages).
   // Leave a value empty ('') to hide it.

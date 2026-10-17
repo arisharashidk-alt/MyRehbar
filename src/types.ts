@@ -53,6 +53,8 @@ export interface Rehbar {
   helpsWith?: HelpId[]
   /** e.g. "1 hour per week" */
   availability?: string
+  /** Public LinkedIn profile, e.g. "https://www.linkedin.com/in/your-id". Shown on the profile page. */
+  linkedin?: string
   /** Show on the home page */
   featured?: boolean
   /** Placeholder entry. Shows a "Sample" badge. */

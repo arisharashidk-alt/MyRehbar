@@ -9,7 +9,8 @@
  * This URL is not a password: it can only ADD rows, never read them.
  * Never paste the Google Sheet's own link anywhere in this project.
  */
-export const FORM_ENDPOINT = ''
+export const FORM_ENDPOINT =
+  'https://script.google.com/macros/s/AKfycbwdWugWop-V7rMw5c5wjge6gMqFLTuXglYGQ3kP13-XSwwm7GEnKqAUy3wGPE-1I60/exec'
 
 /** True once a real Apps Script URL has been pasted in. Only script.google.com URLs are accepted. */
 export function isFormEndpointSet(url: string = FORM_ENDPOINT): boolean {

@@ -6,6 +6,7 @@ import { Card } from '../components/Card'
 import { CheckList } from '../components/CheckList'
 import { MyRehbarForm } from '../components/MyRehbarForm'
 import { rehbarForm } from '../forms/schema'
+import { site } from '../config/site'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useI18n } from '../i18n'
 
@@ -64,6 +65,14 @@ export default function BecomeRehbar() {
         <SectionHeading id="apply" title={t.become.applyTitle} intro={t.become.applyText} />
         <div className="max-w-3xl">
           <MyRehbarForm def={rehbarForm} />
+          {site.contactEmail && (
+            <p className="mt-6 text-slate">
+              {t.become.questions}{' '}
+              <a href={`mailto:${site.contactEmail}`} className="font-semibold" dir="ltr">
+                {site.contactEmail}
+              </a>
+            </p>
+          )}
         </div>
       </Section>
     </>

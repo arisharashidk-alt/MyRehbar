@@ -62,6 +62,18 @@ export function Footer() {
               </ul>
             </>
           )}
+          {site.contactEmail && (
+            <p className="mt-6">
+              <span className="block text-sm text-mint-200">{t.footer.email}</span>
+              <a
+                href={`mailto:${site.contactEmail}`}
+                dir="ltr"
+                className="inline-flex min-h-tap items-center font-semibold text-white underline"
+              >
+                {site.contactEmail}
+              </a>
+            </p>
+          )}
           <p className="mt-6 text-sm text-mint-200">{t.footer.privacyNote}</p>
           <Link to="/privacy" className="mt-1 inline-flex min-h-tap items-center text-sm text-white underline">
             {t.footer.privacyLink}

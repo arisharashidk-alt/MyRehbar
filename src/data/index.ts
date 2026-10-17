@@ -49,9 +49,24 @@ function toRehbar(raw: Raw, index: number): Rehbar | null {
     scholarshipRecipient: bool(raw.scholarshipRecipient),
     helpsWith: strList(raw.helpsWith).filter((h): h is HelpId => oneOf(h, HELPS)),
     availability: str(raw.availability) || undefined,
+    linkedin: linkedinUrl(raw.linkedin, slug),
     featured: bool(raw.featured),
     sample: bool(raw.sample),
   }
+}
+
+/** Only https links to linkedin.com (any country subdomain, e.g. pk.linkedin.com) are shown. */
+function linkedinUrl(value: unknown, slug: string): string | undefined {
+  const s = str(value)
+  if (!s) return undefined
+  try {
+    const url = new URL(/^https?:\/\//.test(s) ? s : `https://${s}`)
+    if (url.protocol === 'https:' && (url.hostname === 'linkedin.com' || url.hostname.endsWith('.linkedin.com'))) return url.href
+  } catch {
+    // fall through
+  }
+  warn(`Rehbar "${slug}" has a linkedin value that is not a linkedin.com link, so it was hidden.`)
+  return undefined
 }
 
 function toScholarship(raw: Raw, index: number): Scholarship | null {
