@@ -3,93 +3,1003 @@
   "scholarships": [
     {
       "slug": "hec-need-based-scholarship",
-      "name": "HEC Need-Based Scholarship",
+      "name": "HEC Need Based Scholarships",
       "provider": "Higher Education Commission (HEC), Pakistan",
       "country": "Pakistan",
-      "levels": ["undergraduate", "masters"],
-      "fundingType": "partial",
-      "eligibility": "TODO verify: Pakistani students at participating universities who cannot afford their studies.",
-      "description": "TODO verify: Short plain-English description of the scholarship, copied from and checked against the official website.",
-      "covers": ["TODO verify: e.g. tuition fee", "TODO verify: e.g. living allowance"],
-      "howToApply": [
-        "TODO verify: Check if your university takes part in the program.",
-        "TODO verify: Get the form from your university's financial aid office.",
-        "TODO verify: Submit the form with proof of family income."
+      "levels": [
+        "undergraduate"
       ],
-      "officialUrl": "https://www.hec.gov.pk",
-      "applicationWindow": "Check the official website for this year's dates.",
+      "fundingType": "partial",
+      "eligibility": "Students from poor families who get admission on merit to a bachelor's program (4 to 5 years) at a participating public university. Students on self-finance seats cannot apply.",
+      "description": "HEC gives money to public universities so they can help students who cannot pay for their studies. Each university chooses its own students through a scholarship committee. The scholarship lasts for the whole degree, including 5-year programs like medicine.",
+      "covers": [
+        "University tuition fee",
+        "Monthly stipend of Rs. 6,000"
+      ],
+      "howToApply": [
+        "Get admission on merit to a participating public university. Students already studying there can also apply.",
+        "Get the scholarship form from the university's Financial Aid Office, or download it from the HEC website.",
+        "Fill in the form and attach the supporting documents.",
+        "Submit the form to the Financial Aid Office of your university. Do not send it to HEC.",
+        "Go to the interview if the university's scholarship committee calls you."
+      ],
+      "officialUrl": "https://www.hec.gov.pk/english/scholarshipsgrants/NBS/Pages/default.aspx",
+      "applicationWindow": "Each university sets its own dates. Ask your university's Financial Aid Office.",
       "deadline": null,
-      "lastVerified": null,
       "openToPakistani": true,
-      "featured": true,
-      "sample": true
+      "sources": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/NBS/Pages/default.aspx",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/NBS/Pages/Eligibility-Criteria.aspx",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/NBS/Pages/How-To-Apply.aspx",
+        "https://pu.edu.pk/home/section/allpress/17054"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": []
     },
     {
-      "slug": "fulbright-pakistan",
-      "name": "Fulbright Scholarship (Pakistan)",
-      "provider": "USEFP (United States Educational Foundation in Pakistan)",
-      "country": "United States",
-      "levels": ["masters", "phd"],
+      "slug": "hec-balochistan-ex-fata-undergraduate-scholarships",
+      "name": "Provision of Higher Education Opportunities for the Students of Balochistan & Erstwhile FATA (Phase-III) - Undergraduate Scholarships",
+      "provider": "Higher Education Commission (HEC), Pakistan",
+      "country": "Pakistan",
+      "levels": [
+        "undergraduate"
+      ],
       "fundingType": "full",
-      "eligibility": "TODO verify: Pakistani graduates who want to study a master's or PhD in the United States.",
-      "description": "TODO verify: Short plain-English description, checked against the official website.",
-      "covers": ["TODO verify"],
-      "officialUrl": "https://www.usefpakistan.org",
-      "applicationWindow": "Check the official website for this year's dates.",
+      "eligibility": "Students aged 22 or younger whose own and father's domicile is from Balochistan or the former FATA, with at least 60% marks in FA/FSc/ICS/ICom/DAE or equal. Students already getting another government or HEC scholarship cannot apply.",
+      "description": "HEC gives 1,000 undergraduate scholarships each year, half for Balochistan and half for former FATA students. You can study any subject at an HEC-recognised public or private university in Pakistan. Selection uses your Matric and FSc marks and an HEC test.",
+      "covers": [
+        "Tuition, other charges and hostel fee (up to Rs. 200,000 per year)",
+        "Living allowance of Rs. 12,000 per month",
+        "Book allowance of Rs. 10,000 per year",
+        "Travel allowance of Rs. 10,000 per year",
+        "One-time settlement allowance of Rs. 20,000"
+      ],
+      "howToApply": [
+        "Read the advertisement and FAQs on the HEC website when the new call opens.",
+        "Apply online on the HEC scholarship portal (scholarship.hec.gov.pk). Hard copies are not accepted.",
+        "Upload attested copies of your CNIC, your and your father's domicile, and your education documents.",
+        "Pay the Rs. 500 test fee through 1Link 1Bill using the number the portal gives you, then verify the payment.",
+        "Submit the application and wait for the acknowledgement email.",
+        "Take the HEC/ETC test. You need at least 50% to pass."
+      ],
+      "officialUrl": "https://www.hec.gov.pk/english/scholarshipsgrants/BF-III/Pages/default.aspx",
+      "applicationWindow": "HEC said in March 2026 that another 1,000 scholarships will be advertised for the 2026-27 session. The last round (Batch-IV) closed on 23 October 2025.",
       "deadline": null,
-      "lastVerified": null,
       "openToPakistani": true,
-      "featured": true,
-      "sample": true
+      "sources": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/BF-III/Pages/default.aspx",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/BF-III/Pages/FAQs.aspx",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/BF-III/Pages/How-to-Apply.aspx",
+        "https://www.hec.gov.pk/english/news/news/Pages/or-Baloch,-Ex-FATA-Students-Yield-Results.aspx"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Balochistan",
+        "Khyber Pakhtunkhwa"
+      ]
+    },
+    {
+      "slug": "peef-intermediate-graduation-scholarships",
+      "name": "PEEF Scholarships (Intermediate and Graduation Level: Outreach and Special Quota)",
+      "provider": "Punjab Educational Endowment Fund (PEEF), Government of the Punjab",
+      "country": "Pakistan",
+      "levels": [
+        "school",
+        "undergraduate"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Students who passed Matric or Intermediate (annual exam) and whose parents earn Rs. 60,000 a month or less. Special Quota is for orphans, children of BPS 1-4 government employees, minority students, students with disabilities, children of civilians martyred in terror attacks, and children of divorced mothers.",
+      "description": "PEEF helps talented and needy students continue to Intermediate and Bachelor's level. Most scholarships (Outreach) are given without an application: PEEF gets results from the boards and contacts top students in each tehsil. Special Quota scholarships are advertised, and students apply online.",
+      "covers": [
+        "Monthly stipend: Rs. 2,500 at Intermediate level",
+        "Monthly stipend: Rs. 5,500 at Graduation level (BS, MBBS, Engineering, B.Com, etc.)"
+      ],
+      "howToApply": [
+        "Outreach: no form is needed. Do well in your board exam and keep your address and phone number correct; PEEF contacts eligible top students.",
+        "Special Quota: watch for the PEEF newspaper advertisement and the 'Latest News' on peef.org.pk.",
+        "Apply online on the PEEF student portal (student.peef.org.pk) before the due date.",
+        "If you are shortlisted, PEEF posts a scholarship form to your home. Fill it in and send it back to PEEF.",
+        "Get admission as a full-time student in the same year you passed your exam."
+      ],
+      "officialUrl": "https://www.peef.org.pk/peef-scholarships",
+      "applicationWindow": "The Special Quota call for 2025-26 was posted on 29 September 2025. Earlier calls were also posted in September to November.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.peef.org.pk/outreach-scholarships",
+        "https://www.peef.org.pk/specialquota-scholarship",
+        "https://www.peef.org.pk/news",
+        "https://www.peef.org.pk/other-provinces",
+        "https://www.peef.org.pk/system/files/StipendRates_2025.pdf"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Punjab"
+      ]
+    },
+    {
+      "slug": "peef-masters-level-scholarship",
+      "name": "PEEF Master's Level Scholarships",
+      "provider": "Punjab Educational Endowment Fund (PEEF), Government of the Punjab",
+      "country": "Pakistan",
+      "levels": [
+        "masters"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Students with Punjab domicile, at least 60% marks or CGPA 2.5 in a 16-year graduation, and full-time admission to a PEEF partner university. Parents' monthly income must be Rs. 60,000 or less.",
+      "description": "PEEF gives each partner university a number of scholarships for Master's, MS and MPhil students. The university advertises, shortlists and selects the students. The scholarship continues until the degree is finished if results stay good.",
+      "covers": [
+        "Monthly stipend: Rs. 7,500 for day scholars",
+        "Monthly stipend: Rs. 9,000 for hostel boarders"
+      ],
+      "howToApply": [
+        "Get full-time admission to a PEEF partner university (the list is on the PEEF website).",
+        "Download the scholarship form and income affidavit from the PEEF website, or get them from your university's Financial Aid Office.",
+        "Attach documents such as CNIC copies, domicile, result cards and the income affidavit.",
+        "Submit the form to your university's Financial Aid Office. Do not send it to PEEF.",
+        "Meet your university's own merit and need checks, such as an interview."
+      ],
+      "officialUrl": "https://www.peef.org.pk/masterlevel-scholarships",
+      "applicationWindow": "Each partner university sets its own dates.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.peef.org.pk/masterlevel-scholarships",
+        "https://www.peef.org.pk/system/files/StipendRates_2025.pdf",
+        "https://www.uvas.edu.pk/NEWS/2025/Dec/sc7.pdf"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Punjab"
+      ]
+    },
+    {
+      "slug": "cm-punjab-honhaar-scholarship",
+      "name": "CM Punjab Honhaar Scholarship Program (Undergraduate)",
+      "provider": "Punjab Higher Education Commission / Higher Education Department, Government of the Punjab",
+      "country": "Pakistan",
+      "levels": [
+        "undergraduate"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Students with Punjab domicile in a selected subject at a selected university or college. New students need at least 70% (science) or 65% (arts) in FSc/Intermediate (80% for MBBS/BDS); family income must be under Rs. 350,000 a month (Rs. 500,000 for federal or private universities).",
+      "description": "This Punjab government program pays 100% of tuition fees for students in 70 selected subjects, such as computer science, engineering, MBBS, law and nursing. Selection is on merit (Matric 30% + Intermediate 70%). Boys and girls can both apply and there is no age limit.",
+      "covers": [
+        "100% tuition fee"
+      ],
+      "howToApply": [
+        "Check that your subject and university or college are on the Honhaar list.",
+        "Download the sample affidavit and print it on e-stamp paper (Rs. 50) with your family income.",
+        "Make an account on honhaarscholarship.punjabhec.gov.pk using your own CNIC.",
+        "Fill in personal, address and education details, and upload your CNIC, Matric and Intermediate results, domicile and affidavit (JPG/PNG under 200 KB).",
+        "Review the form and press SUBMIT. Only submitted forms are considered. There is no fee and no hard copy."
+      ],
+      "officialUrl": "https://honhaarscholarship.punjabhec.gov.pk/",
+      "applicationWindow": "When checked on 17 October 2026, the portal said new registration is open for Fall 2026 first-semester students and for 2nd-semester-onward students.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://honhaarscholarship.punjabhec.gov.pk/",
+        "https://honhaarscholarship.punjabhec.gov.pk/faqs.php",
+        "https://honhaarscholarship.punjabhec.gov.pk/process_flow/How%20to%20Apply.pdf",
+        "https://punjab.gov.pk/node/6433"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Punjab"
+      ]
+    },
+    {
+      "slug": "sindh-educational-endowment-fund-seef",
+      "name": "Sindh Educational Endowment Fund (SEEF) Scholarship",
+      "provider": "Sindh Educational Endowment Fund Trust, College Education Department, Government of Sindh",
+      "country": "Pakistan",
+      "levels": [
+        "undergraduate"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Students with Sindh domicile enrolled in a university or institution on the SEEF Trust panel. You need at least 2.5 GPA or 60% marks and must show financial need.",
+      "description": "SEEF is a Sindh government fund that gives scholarships to poor, needy and meritorious students. Applications are made online, and universities check the documents. Shortlisted students are interviewed. The scholarship can be renewed each year if you keep a 2.5 GPA or 60%.",
+      "covers": [],
+      "howToApply": [
+        "Check that your university is on the SEEF list of approved universities (on seef.sindh.gov.pk).",
+        "Fill in the online application through the link on seef.sindh.gov.pk.",
+        "Prepare documents such as CNIC, transcripts, income certificate, proof of residence and utility bills.",
+        "Submit your documents through your university before the deadline.",
+        "Go to the interview if you are shortlisted. Results come through your university."
+      ],
+      "officialUrl": "https://seef.sindh.gov.pk/",
+      "applicationWindow": "The 2026 round was posted on 2 July 2026 and closed on 31 August 2026. The SEEF FAQ says applications usually open in late summer or early fall.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://seef.sindh.gov.pk/",
+        "https://seef.sindh.gov.pk/news/apply-online-seef-scholarship-program-2026",
+        "https://seef.sindh.gov.pk/faqs",
+        "https://seef.sindh.gov.pk/announcements"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Sindh"
+      ]
+    },
+    {
+      "slug": "beef-partially-funded-scholarships-balochistan",
+      "name": "BEEF Partially Funded Annual Scholarship Schemes (within Balochistan)",
+      "provider": "Balochistan Education Endowment Fund (BEEF), Government of Balochistan",
+      "country": "Pakistan",
+      "levels": [
+        "school",
+        "undergraduate",
+        "masters"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Balochistan students studying in Balochistan with at least 60% marks (or 3.0 GPA) and at least 75% attendance. Special Quota allows 45% marks (or 2.5 GPA) for needy students in some categories, such as orphans.",
+      "description": "BEEF gives yearly scholarship money to good students from DAE and Intermediate up to BS, professional degrees and MS/MPhil. For BS and MS, your institution sends a top-10 or top-15 merit list of each department to BEEF. Some slots are also kept for students from other provinces studying in Balochistan.",
+      "covers": [
+        "Annual scholarship stipend"
+      ],
+      "howToApply": [
+        "Download the BEEF Scholarship Application Form from beef.org.pk.",
+        "Fill it in and attach your result card or transcript, domicile, CNIC or B-Form copies, and two photos.",
+        "Get the form verified by your Head of Department, head of institution or BEEF focal person.",
+        "Submit it through your institution. Your name must be on the merit list your institution sends to BEEF."
+      ],
+      "officialUrl": "https://beef.org.pk/partially-funded-annual-scholarship-schemes-within-balochistan/",
+      "applicationWindow": null,
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://beef.org.pk/",
+        "https://beef.org.pk/partially-funded-annual-scholarship-schemes-within-balochistan/",
+        "https://beef.org.pk/wp-content/uploads/2026/05/BEEF-SAF-Policy-2025-26-1.pdf"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Balochistan"
+      ]
+    },
+    {
+      "slug": "beef-shaheed-benazir-bhutto-matric-district-toppers",
+      "name": "Shaheed Benazir Bhutto Fully Funded Scholarships for District Toppers of Matric Students of Balochistan",
+      "provider": "Balochistan Education Endowment Fund (BEEF), Government of Balochistan",
+      "country": "Pakistan",
+      "levels": [
+        "school"
+      ],
+      "fundingType": "full",
+      "eligibility": "The top 10 Matric students (5 girls and 5 boys) of each Balochistan district who studied at government schools, passed with BBISE or FBISE, and got at least 60% marks. You must have Balochistan domicile and address.",
+      "description": "This BEEF program gives fully funded scholarships for 2 years of Intermediate or DAE to the best Matric students of each district. There are 360 places in total across 36 districts. You must keep at least 60% marks to continue.",
+      "covers": [],
+      "howToApply": [
+        "Check if you are among the top 10 Matric students of your district.",
+        "Get admission to Intermediate or DAE first year at any institution in Pakistan.",
+        "Download the District Toppers Scholarship Form 2026 from beef.org.pk.",
+        "Fill it in and send it to BEEF with the documents asked for on the form."
+      ],
+      "officialUrl": "https://beef.org.pk/shaheed-benazir-bhutto-fully-funded-scholarships-for-district-toppers-of-matric-students-of-balochistan/",
+      "applicationWindow": null,
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://beef.org.pk/shaheed-benazir-bhutto-fully-funded-scholarships-for-district-toppers-of-matric-students-of-balochistan/",
+        "https://beef.org.pk/wp-content/uploads/2026/05/BEEF-Districts-Topper-Scholarship-Form-2026.pdf"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Balochistan"
+      ]
+    },
+    {
+      "slug": "kp-chief-minister-educational-endowment-fund",
+      "name": "Chief Minister Educational Endowment Fund (CMEEF)",
+      "provider": "Higher Education Department, Government of Khyber Pakhtunkhwa",
+      "country": "Pakistan",
+      "levels": [
+        "undergraduate",
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Students with Khyber Pakhtunkhwa domicile who get admission on merit to an approved institution. The father's or guardian's income must be Rs. 100,000 a month or less, and you must not have another scholarship.",
+      "description": "CMEEF gives merit-and-need scholarships to talented students of KP. It is advertised each year through the approved institutions. A committee at each institution interviews students and sends a list to the Higher Education Department for approval.",
+      "covers": [
+        "Tuition fee",
+        "Lab and library charges",
+        "Food and hostel charges",
+        "Monthly stipend of Rs. 5,000"
+      ],
+      "howToApply": [
+        "Get admission on merit to an institution that has an agreement with the KP Higher Education Department.",
+        "Look for the CMEEF advertisement on your institution's website or notice board.",
+        "Download the form from your institution's website and fill it in.",
+        "Submit it with documents (such as domicile, income certificate, CNIC and result card) to your institution. Do not send it to the HED office.",
+        "Go to the interview with the institution's Scholarship Scrutiny Committee."
+      ],
+      "officialUrl": "https://hed.gkp.pk/content/cmeef",
+      "applicationWindow": "Advertised once a year through each approved institution.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://hed.gkp.pk/content/cmeef",
+        "https://aup.edu.pk/a/scholarships/detail/252"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": [
+        "Khyber Pakhtunkhwa"
+      ]
+    },
+    {
+      "slug": "ihsan-trust-interest-free-education-loan",
+      "name": "Ihsan Trust Interest-Free Education Loan (Qarz-e-Hasna)",
+      "provider": "Ihsan Trust (Meezan Bank's charity fund)",
+      "country": "Pakistan",
+      "levels": [
+        "undergraduate"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Pakistani citizens (male and female) studying at an Ihsan Trust partner university or professional body. Students are chosen on a need-cum-merit basis.",
+      "description": "Ihsan Trust gives interest-free loans to pay for higher education. The money goes straight to your university. You pay back a small agreed amount every month, starting the month after you get the loan, and clear the rest within 3 to 5 years after you graduate.",
+      "covers": [
+        "Educational expenses (paid directly to the university)"
+      ],
+      "howToApply": [
+        "Check that your university or professional body is on the Ihsan Trust partner list.",
+        "Go to your university's Financial Aid Office and ask for the Ihsan Trust focal person.",
+        "Apply through the university. Ihsan Trust then reviews the list of applicants.",
+        "Attend the Ihsan Trust interview, where they check your need.",
+        "If approved, the loan is paid to your university. Start your monthly repayment the next month."
+      ],
+      "officialUrl": "https://ihsantrust.org/how-we-work/",
+      "applicationWindow": null,
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://ihsantrust.org/",
+        "https://ihsantrust.org/how-we-work/",
+        "https://ihsantrust.org/our-educational-partners/"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": []
+    },
+    {
+      "slug": "pakistan-bait-ul-mal-education-assistance",
+      "name": "Pakistan Bait-ul-Mal Individual Financial Assistance (Education)",
+      "provider": "Pakistan Bait-ul-Mal (PBM), Government of Pakistan",
+      "country": "Pakistan",
+      "levels": [
+        "school",
+        "undergraduate",
+        "masters"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Poor and deserving students in regular or merit seats at government educational or technical institutions, with family income under Rs. 74,000 a month. Self-finance students, private institution students, and families of government employees cannot apply.",
+      "description": "Pakistan Bait-ul-Mal gives education help to needy students in government institutions. It pays the fee, including boarding charges, directly to the institution. Cases are handled first-come, first-served. If you fail a subject, you lose the right to future help.",
+      "covers": [
+        "Institution fee, including boarding charges (paid directly to the institution)"
+      ],
+      "howToApply": [
+        "Download the Education Assistance form from the PBM website (Forms page).",
+        "Write an application to the MD, Pakistan Bait-ul-Mal, with your name, signature, full address and phone number. Attach your CNIC (or B-Form and a parent's application if you are under 18).",
+        "Get the PBM-format Bonafide Certificate filled in by your institution, with no cutting or overwriting.",
+        "Attach attested copies of your certificates, a parents' affidavit, and your fee slip or fee structure.",
+        "Submit the application through your institution's committee or head, or at a PBM facilitation centre."
+      ],
+      "officialUrl": "https://www.pbm.gov.pk/projects.html",
+      "applicationWindow": "No fixed dates. Cases are handled first-come, first-served.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.pbm.gov.pk/projects.html",
+        "https://www.pbm.gov.pk/Forms.html",
+        "https://www.pbm.gov.pk/images/AllForms/criteria/education-assistance.jpg",
+        "https://www.pbm.gov.pk/images/AllForms/roadmap.JPG"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": []
+    },
+    {
+      "slug": "bisp-benazir-taleemi-wazaif",
+      "name": "Benazir Taleemi Wazaif",
+      "provider": "Benazir Income Support Programme (BISP), Government of Pakistan",
+      "country": "Pakistan",
+      "levels": [
+        "school"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Children of families who are active BISP Kafalat beneficiaries, enrolled in school or college. Age bands: primary 4-12, secondary 8-18, higher secondary 13-22.",
+      "description": "BISP gives a cash stipend every three months to help children from the poorest families stay in school up to Class 12. The child must stay in school and attend at least 70% of school days each quarter. Girls get a little more than boys.",
+      "covers": [
+        "Quarterly cash stipend (paid to the mother)",
+        "One-time Rs. 3,000 bonus for girls who complete primary school"
+      ],
+      "howToApply": [
+        "Your mother (or the family's BISP beneficiary) must be an active BISP Kafalat beneficiary.",
+        "Get admission for the child in a school or college.",
+        "Go with the child to a BISP enrolment camp or BISP field office.",
+        "Bring the beneficiary's CNIC, the child's NADRA B-Form or CRC, and the school or college admission slip verified by the teacher.",
+        "Make sure the child attends at least 70% of school days so payments continue."
+      ],
+      "officialUrl": "https://bisp.gov.pk/Detail/YzNlY2Q2ZGYtNjIwZS00MjNiLWFhMmEtZGM5NWNkMjZhMjQ3",
+      "applicationWindow": null,
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://bisp.gov.pk/Detail/YzNlY2Q2ZGYtNjIwZS00MjNiLWFhMmEtZGM5NWNkMjZhMjQ3",
+        "https://bisp.gov.pk/NewsDetail/ZmQ0MDQ0ODEtYWQwNC00NmVlLWIxYTctN2IyNzlkYzMwZGIy"
+      ],
+      "lastVerified": "2026-10-17",
+      "regions": []
+    },
+    {
+      "slug": "uwc-pakistan",
+      "name": "United World Colleges (UWC) – Pakistan National Committee selection",
+      "provider": "UWC Pakistan (national committee of United World Colleges)",
+      "country": "Multiple countries",
+      "levels": [
+        "school"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Pakistani citizens who live in Pakistan, usually aged 16–17, who have finished at least 10 years of school. Scholarships are given based on your family's financial need.",
+      "description": "UWC has 18 schools around the world. Selected students study the two-year IB Diploma with students from many countries. Places can be fully or partly funded, depending on need.",
+      "covers": [
+        "Full or partial scholarship based on demonstrated financial need"
+      ],
+      "howToApply": [
+        "Fill in the online application on the UWC Pakistan website when it opens.",
+        "Write the essays and short answers, and upload your school transcripts and other documents.",
+        "Give signed permission from your parent or guardian and your family's financial information.",
+        "Take the tests (logical reasoning, problem-solving, English) and join the group activities.",
+        "Attend a panel interview. The national committee then nominates top students to a UWC school."
+      ],
+      "officialUrl": "https://pk.uwc.org/how-to-apply/",
+      "applicationWindow": "For 2027 entry: 1 September to 30 September 2026 (now closed). The next round will probably open around September 2027.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://pk.uwc.org/how-to-apply/",
+        "https://www.uwc.org/how-to-apply"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "fulbright-pakistan-degree",
+      "name": "Fulbright Degree Program (Master's and PhD)",
+      "provider": "United States Educational Foundation in Pakistan (USEFP), funded by the U.S. government",
+      "country": "United States",
+      "levels": [
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Pakistani citizens living in Pakistan. For a master's you need 16 years of education, and for a PhD you need 18 years. You also need a GRE General score of at least 145 in each section.",
+      "description": "Fulbright pays for Pakistani students to do a master's or PhD in the USA. All subjects are allowed except clinical medicine. Students must come back to Pakistan after they finish.",
+      "covers": [
+        "Tuition",
+        "Required textbooks",
+        "Airfare",
+        "Living stipend",
+        "Health insurance"
+      ],
+      "howToApply": [
+        "Take the GRE General test.",
+        "Fill in the online application on the USEFP website (paper forms are not accepted).",
+        "Submit three reference letters.",
+        "Upload your GRE score report and your transcripts with your university's grading scale.",
+        "If you are selected, take the TOEFL and sign the USEFP contract (PhD students also sign a bond with HEC)."
+      ],
+      "officialUrl": "https://usefp.org/scholarships/fulbright-degree.cfm",
+      "applicationWindow": "The 2027 round closed on 1 April 2026. The next round has not been announced yet.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://usefp.org/scholarships/fulbright-degree.cfm"
+      ],
+      "lastVerified": "2026-10-17"
     },
     {
       "slug": "chevening",
-      "name": "Chevening Scholarship",
-      "provider": "UK Government",
+      "name": "Chevening Scholarships",
+      "provider": "UK Government (Foreign, Commonwealth & Development Office)",
       "country": "United Kingdom",
-      "levels": ["masters"],
+      "levels": [
+        "masters"
+      ],
       "fundingType": "full",
-      "eligibility": "TODO verify: Graduates with work experience who want to study a one-year master's in the UK.",
-      "description": "TODO verify: Short plain-English description, checked against the official website.",
-      "officialUrl": "https://www.chevening.org",
-      "applicationWindow": "Check the official website for this year's dates.",
+      "eligibility": "You need an undergraduate degree, at least 2 years of work experience (2,800 hours), and you must return to Pakistan for at least 2 years after the scholarship. You must apply to three UK courses.",
+      "description": "Chevening pays for a one-year master's degree at a UK university. It is for future leaders who want to bring positive change to their home country.",
+      "covers": [
+        "Fully funded (official page says 'fully-funded'; itemised list not confirmed for the current year)"
+      ],
+      "howToApply": [
+        "Check that you are eligible on the Chevening website.",
+        "Choose three different eligible master's courses at UK universities.",
+        "Fill in the online Chevening application when it is open (August to October).",
+        "If shortlisted, attend an interview at the British High Commission (March–April).",
+        "Get an unconditional offer from one of your UK courses by the deadline in July."
+      ],
+      "officialUrl": "https://www.chevening.org/scholarship/pakistan/",
+      "applicationWindow": "Usually opens in August and closes in October. The 2027-28 round is now closed.",
       "deadline": null,
-      "lastVerified": null,
       "openToPakistani": true,
-      "featured": true,
-      "sample": true
+      "sources": [
+        "https://www.chevening.org/scholarship/pakistan/",
+        "https://www.chevening.org/scholarships/",
+        "https://www.chevening.org/scholarships/application-timeline/",
+        "https://chevening.org/resource-hub/guidance/eligibility/"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "commonwealth-scholarships-uk",
+      "name": "Commonwealth Scholarships (Master's and PhD) for Pakistan",
+      "provider": "Commonwealth Scholarship Commission in the UK (CSC), with HEC Pakistan as the nominating agency",
+      "country": "United Kingdom",
+      "levels": [
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Pakistani or AJ&K citizens living in Pakistan, who cannot pay for UK study themselves. You need a first-division degree (16 years for a master's, 17–18 years for a PhD) and at least 60/100 on the HEC HAT test.",
+      "description": "This scholarship pays for a master's or PhD at a UK university. HEC chooses candidates in Pakistan, and the CSC makes the final decision. At least 45% of HEC nominations go to women.",
+      "covers": [
+        "Tuition fees",
+        "Return airfare",
+        "Monthly stipend (£1,712, or £2,000 in London) – master's figures",
+        "Study travel grant",
+        "Extra support for some single parents and for students with a disability"
+      ],
+      "howToApply": [
+        "Take the HEC HAT test and score at least 60/100.",
+        "Update your HEC profile with your current email and phone number.",
+        "Apply on the CSC online system (link on the HEC page).",
+        "Apply on the HEC portal (scholarship.hec.gov.pk) under 'Learning Opportunities Abroad'.",
+        "Download and save your HEC application. You must submit both applications before the deadline."
+      ],
+      "officialUrl": "https://www.hec.gov.pk/english/HECAnnouncements/Pages/CW-Scholarship.aspx",
+      "applicationWindow": "HEC portal opened on 8 September 2026. Both HEC and CSC applications close on 20 October 2026.",
+      "deadline": "2026-10-20",
+      "openToPakistani": true,
+      "sources": [
+        "https://www.hec.gov.pk/english/HECAnnouncements/Pages/CW-Scholarship.aspx",
+        "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-masters-scholarships/"
+      ],
+      "lastVerified": "2026-10-17"
     },
     {
       "slug": "turkiye-burslari",
-      "name": "Türkiye Bursları",
+      "name": "Türkiye Scholarships (Türkiye Bursları)",
       "provider": "Government of Türkiye",
       "country": "Türkiye",
-      "levels": ["undergraduate", "masters", "phd"],
+      "levels": [
+        "undergraduate",
+        "masters",
+        "phd"
+      ],
       "fundingType": "full",
-      "eligibility": "TODO verify: International students, including from Pakistan, at different study levels.",
-      "description": "TODO verify: Short plain-English description, checked against the official website.",
-      "officialUrl": "https://www.turkiyeburslari.gov.tr",
-      "applicationWindow": "Check the official website for this year's dates.",
+      "eligibility": "Open to citizens of all countries. For a bachelor's degree you must be under 21 with at least 70% marks. For a master's you must be under 30 with at least 75%. Medicine, dentistry and pharmacy need 90%.",
+      "description": "The Turkish government pays for full degrees at Turkish universities. It also gives you a university place. Students learn Turkish for one year first if needed.",
+      "covers": [
+        "University placement",
+        "Tuition fees",
+        "Monthly stipend (6,500 TL undergraduate, 9,500 TL master's, 13,000 TL PhD)",
+        "Accommodation",
+        "Health insurance",
+        "Round-trip flight ticket (at the start and end of study)",
+        "One-year Turkish language course"
+      ],
+      "howToApply": [
+        "Create an account on the online system (tbbs.turkiyeburslari.gov.tr). Applying is free.",
+        "Choose your programs and universities.",
+        "Upload your ID or passport, photo, diploma or school certificate, and transcript.",
+        "Add test results if your program asks for them (for example SAT, TOEFL).",
+        "Submit before the deadline and attend an interview if you are shortlisted."
+      ],
+      "officialUrl": "https://www.turkiyeburslari.gov.tr/en",
+      "applicationWindow": "The general round usually runs from 10 January to 20 February each year. Interviews are held April–June.",
       "deadline": null,
-      "lastVerified": null,
       "openToPakistani": true,
-      "sample": true
+      "sources": [
+        "https://www.turkiyeburslari.gov.tr/en",
+        "https://www.turkiyeburslari.gov.tr/calendar",
+        "https://www.turkiyeburslari.gov.tr/scholarshipsprograms",
+        "https://www.turkiyeburslari.gov.tr/fulltimeprograms",
+        "https://www.turkiyeburslari.gov.tr/applysteps"
+      ],
+      "lastVerified": "2026-10-17"
     },
     {
-      "slug": "daad-scholarships",
-      "name": "DAAD Scholarships",
+      "slug": "daad-epos",
+      "name": "DAAD Development-Related Postgraduate Courses (EPOS)",
       "provider": "DAAD (German Academic Exchange Service)",
       "country": "Germany",
-      "levels": ["masters", "phd", "exchange"],
+      "levels": [
+        "masters",
+        "phd"
+      ],
       "fundingType": "full",
-      "eligibility": "TODO verify: Different programs for graduates and researchers. Use the DAAD scholarship database to check.",
-      "description": "TODO verify: Short plain-English description, checked against the official website.",
-      "officialUrl": "https://www.daad.de/en/",
-      "applicationWindow": "Depends on the program. Check the official website.",
+      "eligibility": "Graduates from developing countries with a bachelor's degree in the top third of their class. You need at least 2 years of related work experience, and your degree should not be more than 6 years old.",
+      "description": "DAAD gives scholarships for selected master's and PhD courses in Germany that relate to development. You apply directly to the course, not to DAAD. Courses last 12 to 42 months.",
+      "covers": [
+        "Monthly stipend (€992 for master's, €1,400 for PhD)",
+        "Health, accident and liability insurance contributions",
+        "Travel allowance",
+        "Sometimes rent support and family allowance"
+      ],
+      "howToApply": [
+        "Pick up to three EPOS courses from the DAAD course list and rank them.",
+        "Prepare the EPOS form, a Europass CV, a motivation letter, an employer letter, work certificates, an English test score (IELTS/TOEFL), and your degrees with transcripts.",
+        "Send your application directly to each course before its own deadline.",
+        "If the course selects you, upload your documents to the DAAD Portal.",
+        "DAAD makes the final decision (selection runs from October to March)."
+      ],
+      "officialUrl": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+      "applicationWindow": "Each course has its own deadline. Most fall between June and October for courses starting the next year (2027/28 list is published).",
       "deadline": null,
-      "lastVerified": null,
       "openToPakistani": true,
-      "sample": true
+      "sources": [
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+        "https://static.daad.de/media/daad_de/pdfs_nicht_barrierefrei/in-deutschland-studieren-forschen-lehren/epos-course_overview__2027_28.pdf"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "mext-japan",
+      "name": "Japanese Government (MEXT) Scholarship – Undergraduate and Research Students",
+      "provider": "Government of Japan (MEXT), through the Embassy of Japan in Pakistan",
+      "country": "Japan",
+      "levels": [
+        "undergraduate",
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Undergraduate: under 25 with 12 years of schooling (students in their last year can apply). Research (master's/PhD): under 35 and able to join a graduate program in Japan.",
+      "description": "The Japanese government pays for Pakistani students to study in Japan. Undergraduate scholars first learn Japanese and then do a degree (about 5 years in total). Research scholars do master's or PhD studies.",
+      "covers": [
+        "Tuition (exempted)",
+        "Monthly stipend",
+        "Round-trip airfare"
+      ],
+      "howToApply": [
+        "Watch the Embassy of Japan in Pakistan website for the new round (usually around April–June).",
+        "Download and fill in the application form and the mark sheet form.",
+        "Add your school transcripts, a recommendation letter from your teacher or principal, and other required documents.",
+        "Send your application to the Embassy in Islamabad or, if you are from Sindh or Balochistan, to the Consulate-General in Karachi.",
+        "If shortlisted, take the written test and interview."
+      ],
+      "officialUrl": "https://www.pk.emb-japan.go.jp/itpr_en/MEXT_Undergrad_Scholarship.html",
+      "applicationWindow": "The 2027 undergraduate round closed on 5 June 2026. The 2027 research round is also closed. The next round is expected in 2027.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.pk.emb-japan.go.jp/itpr_en/MEXT_Undergrad_Scholarship.html",
+        "https://www.pk.emb-japan.go.jp/itpr_en/MEXT_Research_Scholarship.html",
+        "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
+      ],
+      "lastVerified": null
+    },
+    {
+      "slug": "chinese-government-scholarship-hec",
+      "name": "Chinese Government Scholarship (Type A, through HEC)",
+      "provider": "Government of China (China Scholarship Council), with HEC Pakistan as the nominating agency",
+      "country": "China",
+      "levels": [
+        "undergraduate",
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Pakistani or AJ&K citizens in good health. Undergraduate: 12 years of education and under 25. Master's: 16 years and under 35. PhD: master's degree and under 40. You need a USAT or HAT score of at least 50.",
+      "description": "The Chinese government pays for Pakistani students to study at Chinese universities. In 2026-27 there were 75 seats for Pakistan: 35 bachelor's, 25 master's and 15 PhD.",
+      "covers": [
+        "Tuition (including health insurance)",
+        "Free university dormitory or accommodation subsidy",
+        "Monthly stipend"
+      ],
+      "howToApply": [
+        "Take the USAT (for bachelor's) or HAT (for master's/PhD) test and score at least 50.",
+        "Get a pre-admission letter from at least one Chinese university.",
+        "Bachelor's students must also take the CSCA test.",
+        "Apply on the HEC portal (scholarship.hec.gov.pk) under 'Learning Opportunities Abroad'.",
+        "Apply on campuschina.org under Type A, Agency Number 5861. You must apply on both portals."
+      ],
+      "officialUrl": "https://www.hec.gov.pk/english/scholarshipsgrants/lao/CGSP/Pages/How-to-Apply.aspx",
+      "applicationWindow": "The 2026-27 round closed in January 2026. The 2027-28 round had not been announced yet.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.hec.gov.pk/english/scholarshipsgrants/lao/CGSP/Pages/Eligibility-Criteria.aspx",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/lao/CGSP/Pages/How-to-Apply.aspx",
+        "https://www.hec.gov.pk/english/scholarshipsgrants/lao/CGSP/Pages/Financial-Coverage.aspx"
+      ],
+      "lastVerified": null
+    },
+    {
+      "slug": "global-korea-scholarship",
+      "name": "Global Korea Scholarship (GKS)",
+      "provider": "Government of South Korea (NIIED), through the Korean Embassy in Pakistan or partner universities",
+      "country": "South Korea",
+      "levels": [
+        "undergraduate",
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Undergraduate applicants must be under 25. Master's and PhD applicants must be under 40. Pakistan had 8 embassy-track places for graduate study in 2026.",
+      "description": "The Korean government pays for full degrees in Korea. Students usually learn Korean for one year before starting their degree.",
+      "covers": [
+        "Airfare",
+        "Korean language training fees",
+        "Tuition",
+        "Monthly allowance"
+      ],
+      "howToApply": [
+        "Read the GKS guidelines when they come out (graduate: February, undergraduate: September).",
+        "Choose a track: the Embassy Track or the University Track (apply directly to a GKS university).",
+        "Create an account on the Study in Korea website (studyinkorea.go.kr) and fill in the application.",
+        "Upload your documents before the deadline.",
+        "If shortlisted, attend an interview."
+      ],
+      "officialUrl": "https://www.studyinkorea.go.kr/in/plan/scholarship.do",
+      "applicationWindow": "Graduate round: applications in February–March (Pakistan 2026: 12–25 February). Undergraduate round: applications in September–November.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.studyinkorea.go.kr/in/plan/scholarship.do",
+        "https://overseas.mofa.go.kr/pk-en/brd/m_3150/view.do?seq=762165"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "stipendium-hungaricum",
+      "name": "Stipendium Hungaricum Scholarship",
+      "provider": "Government of Hungary (Tempus Public Foundation), with HEC Pakistan as the sending partner",
+      "country": "Hungary",
+      "levels": [
+        "undergraduate",
+        "masters",
+        "phd"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Pakistani students nominated by HEC. Bachelor's and master's study is limited to certain subjects, such as agriculture, engineering, health science and computer science. PhD study can be in any subject.",
+      "description": "Hungary offers free tuition and a small monthly stipend at Hungarian universities. You must apply on both the Hungarian website and the HEC website, and pass an HEC written test.",
+      "covers": [
+        "Free tuition",
+        "Monthly stipend (HUF 43,700 for bachelor's/master's; HUF 140,000–180,000 for PhD)",
+        "Free dormitory place or HUF 40,000 a month for housing",
+        "Medical insurance",
+        "Free Hungarian language classes"
+      ],
+      "howToApply": [
+        "Find up to two eligible programmes on the Stipendium Hungaricum website.",
+        "Register and upload your documents on apply.stipendiumhungaricum.hu.",
+        "Also apply on the HEC portal and register for the HEC written test.",
+        "HEC nominates selected students in February.",
+        "Take the university entrance exam (March–May). Results come in June or July."
+      ],
+      "officialUrl": "https://stipendiumhungaricum.hu/apply/",
+      "applicationWindow": "The 2026/27 round closed on 15 January 2026. The next round usually closes in mid-January.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://stipendiumhungaricum.hu/apply/",
+        "https://stipendiumhungaricum.hu/partners/",
+        "https://stipendiumhungaricum.hu/about/"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "erasmus-mundus-joint-masters",
+      "name": "Erasmus Mundus Joint Masters Scholarships",
+      "provider": "European Union (Erasmus+)",
+      "country": "Multiple countries",
+      "levels": [
+        "masters"
+      ],
+      "fundingType": "full",
+      "eligibility": "Students from any country who have a bachelor's degree or are in their last year of one. You must not have had an Erasmus Mundus scholarship before.",
+      "description": "These are master's programmes run by groups of universities, mostly in Europe. Students usually study in two or more countries. The best applicants get a full scholarship.",
+      "covers": [
+        "No tuition or other compulsory fees for scholarship holders",
+        "€1,400 per month for travel, visa, settling-in and living costs"
+      ],
+      "howToApply": [
+        "Search the Erasmus Mundus course catalogue for a master's programme you like.",
+        "Read that programme's website for its entry rules and deadline.",
+        "Apply directly to the programme and say you want a scholarship.",
+        "Submit before the programme's deadline (usually October to January)."
+      ],
+      "officialUrl": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "applicationWindow": "Each programme sets its own deadline. Most are between October and January for courses starting the next year.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/erasmus-mundus"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "australia-awards-pakistan",
+      "name": "Australia Awards Scholarships – Pakistan",
+      "provider": "Australian Government (Department of Foreign Affairs and Trade)",
+      "country": "Australia",
+      "levels": [
+        "masters"
+      ],
+      "fundingType": "full",
+      "eligibility": "Pakistani citizens living in Pakistan, aged 45 or under, with 16 years of education and 5 years of relevant work experience. You must return to Pakistan for at least 2 years after study.",
+      "description": "The Australian government pays for master's degrees in Australia. It focuses on areas such as climate change, women's empowerment, agriculture and water, infrastructure and economic development.",
+      "covers": [
+        "Full tuition",
+        "Return economy airfare",
+        "Establishment allowance",
+        "Contribution to living expenses",
+        "Overseas student health cover"
+      ],
+      "howToApply": [
+        "Read the Pakistan country profile and eligibility checklist on the Australia Awards Pakistan website.",
+        "Prepare your CV, Development Impact and Linkages Plan, employer letter and referee reports using the official templates.",
+        "Apply online on the OASIS system during the open window (usually February–April).",
+        "If shortlisted, attend the selection process."
+      ],
+      "officialUrl": "https://australiaawardspakistan.org/",
+      "applicationWindow": "The 2027 intake was open from 1 February to 30 April 2026. The website says applications will reopen in early 2027.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://australiaawardspakistan.org/",
+        "https://australiaawardspakistan.org/application-documentation-for-intake-2027/",
+        "https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries/pakistan-information-for-intake",
+        "https://www.dfat.gov.au/sites/default/files/aus-awards-scholarships-policy-handbook.pdf"
+      ],
+      "lastVerified": null
+    },
+    {
+      "slug": "aga-khan-foundation-isp",
+      "name": "Aga Khan Foundation International Scholarship Programme",
+      "provider": "Aga Khan Foundation (AKDN)",
+      "country": "Multiple countries",
+      "levels": [
+        "masters",
+        "phd"
+      ],
+      "fundingType": "partial",
+      "eligibility": "Outstanding students from Pakistan and other listed countries who have a bachelor's degree and real financial need. You must be admitted to a good postgraduate programme. Applicants under 30 are preferred.",
+      "description": "This award helps pay for postgraduate study abroad. Half of the money is a grant and half is a loan that you pay back after you graduate. Master's degrees get priority.",
+      "covers": [
+        "Tuition",
+        "Living expenses (50% grant, 50% loan)"
+      ],
+      "howToApply": [
+        "Use the eligibility tool on the AKDN website to confirm you can apply.",
+        "Contact the local Aga Khan Foundation team in Pakistan for the form.",
+        "Get admission to a postgraduate programme and make a funding plan for all years of study.",
+        "Find a guarantor to co-sign the loan agreement.",
+        "Submit your application before the local deadline."
+      ],
+      "officialUrl": "https://the.akdn/our-agencies/aga-khan-foundation/international-scholarship-programme",
+      "applicationWindow": "The 2026-2027 round is closed. The next round opens in early 2027.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://the.akdn/our-agencies/aga-khan-foundation/international-scholarship-programme"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "rhodes-scholarship-pakistan",
+      "name": "Rhodes Scholarship for Pakistan",
+      "provider": "Rhodes Trust (University of Oxford)",
+      "country": "United Kingdom",
+      "levels": [
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Pakistani citizens aged 18–23 (or under 27 if you finished your first degree recently) who studied in Pakistan for at least 4 of the last 10 years. You must finish your undergraduate degree with very strong grades.",
+      "description": "Two Pakistani students win this scholarship each year for postgraduate study at the University of Oxford. It looks for academic excellence, character and leadership.",
+      "covers": [
+        "Oxford course fees",
+        "Annual stipend (£20,400 in 2025-26)",
+        "Oxford application fee",
+        "Student visa fee and health surcharge",
+        "Two economy flights",
+        "Settling-in allowance"
+      ],
+      "howToApply": [
+        "Read the Pakistan 'Information for Candidates' document on the Rhodes House website.",
+        "Check that your Oxford course is covered.",
+        "Ask your referees to read the 'Guidance for Referees'.",
+        "Fill in the online application while it is open (June to August).",
+        "If shortlisted, go through interviews in Pakistan."
+      ],
+      "officialUrl": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/pakistan/",
+      "applicationWindow": "The last round ran from 1 June to 5 August 2026 (for 2027 entry). The site says applications reopen in 2027 for entry in 2028.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/pakistan/",
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/applications/pakistan/eligibilitycriteria/",
+        "https://www.rhodeshouse.ox.ac.uk/scholarships/the-rhodes-scholarship/"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "gates-cambridge",
+      "name": "Gates Cambridge Scholarship",
+      "provider": "Gates Cambridge Trust (University of Cambridge)",
+      "country": "United Kingdom",
+      "levels": [
+        "masters",
+        "phd"
+      ],
+      "fundingType": "full",
+      "eligibility": "Citizens of any country outside the UK who apply for a full-time PhD, MLitt or one-year postgraduate course at Cambridge. MBA and some professional degrees are not included.",
+      "description": "This scholarship pays the full cost of postgraduate study at the University of Cambridge. It is for students who show leadership and want to improve other people's lives.",
+      "covers": [
+        "University composition fee",
+        "Maintenance allowance (£23,152 for 12 months in 2026-27)",
+        "One economy airfare at the start and end of the course",
+        "Visa costs and Immigration Health Surcharge"
+      ],
+      "howToApply": [
+        "Choose your Cambridge course and check its funding deadline.",
+        "Apply through the University's Graduate Application Portal and fill in the Gates Cambridge part of the funding section.",
+        "Answer the four Gates Cambridge questions.",
+        "PhD applicants upload a research proposal.",
+        "Ask for a Gates Cambridge reference as well as your two academic references."
+      ],
+      "officialUrl": "https://www.gatescambridge.org/apply/how-to-apply/",
+      "applicationWindow": "Open now for 2027/28 entry (from 11 September 2026). The deadline is 8 December 2026 or 6 January 2027, depending on your course.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.gatescambridge.org/apply/timeline/",
+        "https://www.gatescambridge.org/apply/eligibility/",
+        "https://www.gatescambridge.org/apply/how-to-apply/",
+        "https://www.gatescambridge.org/programme/the-scholarship/"
+      ],
+      "lastVerified": "2026-10-17"
+    },
+    {
+      "slug": "brunei-darussalam-government-scholarship",
+      "name": "Government of Brunei Darussalam Scholarship for Foreign Students",
+      "provider": "Government of Brunei Darussalam (Ministry of Foreign Affairs)",
+      "country": "Brunei",
+      "levels": [
+        "undergraduate",
+        "masters"
+      ],
+      "fundingType": "full",
+      "eligibility": "Foreign students, including Pakistanis, who have not studied in Brunei before. You must be under 25 for a diploma or bachelor's, or under 35 for a master's, and meet the English requirement (for example IELTS 6.0).",
+      "description": "The Brunei government pays for diploma, bachelor's and master's study at universities and colleges in Brunei. It is for first-time international students.",
+      "covers": [
+        "Tuition and related fees",
+        "Economy airfare to Brunei and back home",
+        "BND$500 monthly personal allowance",
+        "BND$150 monthly meals allowance",
+        "BND$600 yearly book allowance",
+        "Accommodation in the university hostel",
+        "Insurance",
+        "Baggage shipment home at the end"
+      ],
+      "howToApply": [
+        "Fill in the online application form on the Brunei Ministry of Foreign Affairs website.",
+        "Upload your ID, certified academic documents, birth certificate, passport copy and references.",
+        "If you choose UBD or UTB, also apply on that university's own website.",
+        "Take an interview or written test if asked."
+      ],
+      "officialUrl": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+      "applicationWindow": "The 2026/2027 round closed on 15 February 2026. The next round had not been announced yet.",
+      "deadline": null,
+      "openToPakistani": true,
+      "sources": [
+        "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+        "https://www.hec.gov.pk/english/HECAnnouncements/Pages/BDGS.aspx"
+      ],
+      "lastVerified": "2026-10-17"
     }
   ]
 }

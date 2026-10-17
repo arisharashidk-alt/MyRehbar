@@ -9,7 +9,8 @@ import { EmptyState } from '../components/EmptyState'
 import { DeadlineText, LastVerified } from '../components/ScholarshipMeta'
 import { getScholarship } from '../data'
 import { usePageMeta } from '../hooks/usePageMeta'
-import { useI18n } from '../i18n'
+import { fmt, useI18n } from '../i18n'
+import { AskCta } from '../components/AskCta'
 
 function Fact({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -95,6 +96,24 @@ export default function ScholarshipDetail() {
             <p>{t.common.checkOfficial}</p>
           </div>
 
+          {s.sources && s.sources.length > 0 && (
+            <section aria-labelledby="sources">
+              <h2 id="sources" className="text-lg">
+                {t.scholarships.sourcesTitle}
+              </h2>
+              <ul className="mt-2 space-y-1 text-sm">
+                {s.sources.map((src) => (
+                  <li key={src}>
+                    <a href={src} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-tap items-center break-all" dir="ltr">
+                      {src.replace(/^https:\/\//, '')}
+                      <span className="sr-only"> {t.common.opensNewTab}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
           <section aria-labelledby="help" className="rounded-card border border-line bg-mint-50 p-6 md:p-8">
             <h2 id="help" className="text-xl">
               {t.scholarships.getHelpTitle}
@@ -104,12 +123,15 @@ export default function ScholarshipDetail() {
               {t.scholarships.getHelpCta}
             </Button>
           </section>
+
+          <AskCta about={s.name} />
         </div>
 
         <aside className="order-first lg:order-none">
           <Card className="lg:sticky lg:top-24">
             <dl>
               {s.country && <Fact label={t.common.country}>{s.country}</Fact>}
+              {s.regions && s.regions.length > 0 && <Fact label={t.common.eligibility}>{fmt(t.scholarships.regionOnly, { regions: s.regions.join(' / ') })}</Fact>}
               {s.levels.length > 0 && <Fact label={t.common.level}>{s.levels.map((l) => t.levels[l]).join(', ')}</Fact>}
               <Fact label={t.common.funding}>{t.funding[s.fundingType]}</Fact>
               <Fact label={t.common.deadline}>

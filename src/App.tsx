@@ -8,6 +8,8 @@ const Rehbars = lazy(() => import('./pages/Rehbars'))
 const RehbarProfile = lazy(() => import('./pages/RehbarProfile'))
 const Scholarships = lazy(() => import('./pages/Scholarships'))
 const ScholarshipDetail = lazy(() => import('./pages/ScholarshipDetail'))
+const Universities = lazy(() => import('./pages/Universities'))
+const UniversityDetail = lazy(() => import('./pages/UniversityDetail'))
 const Students = lazy(() => import('./pages/Students'))
 const BecomeRehbar = lazy(() => import('./pages/BecomeRehbar'))
 const Resources = lazy(() => import('./pages/Resources'))
@@ -28,6 +30,8 @@ export default function App() {
         <Route path="rehbars/:slug" element={<RehbarProfile />} />
         <Route path="scholarships" element={<Scholarships />} />
         <Route path="scholarships/:slug" element={<ScholarshipDetail />} />
+        <Route path="universities" element={<Universities />} />
+        <Route path="universities/:slug" element={<UniversityDetail />} />
         <Route path="students" element={<Students />} />
         <Route path="become-a-rehbar" element={<BecomeRehbar />} />
         <Route path="resources" element={<Resources />} />

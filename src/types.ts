@@ -63,7 +63,7 @@ export interface Rehbar {
   sample?: boolean
 }
 
-export type LevelId = 'undergraduate' | 'masters' | 'phd' | 'exchange'
+export type LevelId = 'school' | 'undergraduate' | 'masters' | 'phd' | 'exchange'
 export type FundingType = 'full' | 'partial'
 
 export interface Scholarship {
@@ -90,6 +90,10 @@ export interface Scholarship {
   /** Date you last checked the official website, "YYYY-MM-DD" */
   lastVerified?: string | null
   openToPakistani: boolean
+  /** Official pages where the details were checked */
+  sources?: string[]
+  /** Only for students from these provinces (domicile). Empty = anywhere in Pakistan. */
+  regions?: string[]
   featured?: boolean
   sample?: boolean
 }
@@ -112,4 +116,59 @@ export interface Resource {
   sections: ResourceSection[]
   /** true until you have reviewed and edited the guide. Shows a "Draft" badge. */
   draft?: boolean
+}
+
+/* ---------- Universities ---------- */
+
+export type UniCategory = 'engineering' | 'medical' | 'business' | 'general'
+export type AidType = 'need-based' | 'merit' | 'loan' | 'outreach' | 'external'
+
+export interface AidProgram {
+  name: string
+  type: AidType
+  /** e.g. ["Tuition", "Hostel", "Monthly stipend"] */
+  covers: string[]
+  /** true / false if known, undefined if not confirmed */
+  coversHostel?: boolean
+  /** e.g. "Up to 100% of tuition" */
+  amount?: string
+  whoCanApply?: string
+  howToApply: string[]
+  sourceUrl?: string
+}
+
+export interface University {
+  slug: string
+  name: string
+  shortName?: string
+  city: string
+  province?: string
+  sector: 'public' | 'private'
+  categories: UniCategory[]
+  website: string
+  admissionsUrl?: string
+  financialAidUrl?: string
+  feesUrl?: string
+  about?: string
+  admissionSteps: string[]
+  hostel?: { available?: boolean; notes?: string; sourceUrl?: string }
+  /** Only numbers stated on an official fee page, for the academic year given */
+  costs?: {
+    academicYear?: string
+    tuitionPerYear?: number
+    hostelPerYear?: number
+    otherNotes?: string
+    sourceUrl?: string
+  }
+  aid: AidProgram[]
+  sources: string[]
+  /** Date someone last checked the official pages, "YYYY-MM-DD" */
+  lastVerified?: string | null
+}
+
+export interface MedicalProcess {
+  mdcat?: string
+  provinces: { province: string; explanation: string; url?: string }[]
+  officialListUrl?: string
+  sources: string[]
 }

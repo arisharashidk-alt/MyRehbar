@@ -4,3 +4,8 @@ dist
 .DS_Store
 *.local
 /pfp.png
+
+# Checker output (stays on your computer)
+reports/
+.check-state.json
+exports/

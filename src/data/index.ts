@@ -8,7 +8,7 @@ import scholarshipsFile from './scholarships.json'
 import type { FieldId, FundingType, HelpId, LevelId, Rehbar, Scholarship } from '../types'
 
 const FIELDS: FieldId[] = ['engineering', 'medicine', 'business', 'cs', 'arts', 'social-sciences', 'law', 'sciences']
-const LEVELS: LevelId[] = ['undergraduate', 'masters', 'phd', 'exchange']
+const LEVELS: LevelId[] = ['school', 'undergraduate', 'masters', 'phd', 'exchange']
 const HELPS: HelpId[] = ['choosing-field', 'applications', 'essays', 'interviews', 'english-tests', 'university-life']
 
 type Raw = Record<string, unknown>
@@ -94,7 +94,9 @@ function toScholarship(raw: Raw, index: number): Scholarship | null {
     applicationWindow: str(raw.applicationWindow) || undefined,
     deadline: parseDate(deadline) ? deadline : null,
     lastVerified: parseDate(str(raw.lastVerified)) ? str(raw.lastVerified) : null,
-    openToPakistani: raw.openToPakistani !== false,
+    openToPakistani: raw.openToPakistani === true,
+    sources: strList(raw.sources).filter((u) => u.startsWith('https://')),
+    regions: strList(raw.regions),
     featured: bool(raw.featured),
     sample: bool(raw.sample),
   }
@@ -108,7 +110,8 @@ function load<T>(list: unknown, map: (raw: Raw, i: number) => T | null): T[] {
 }
 
 export const rehbars: Rehbar[] = load(rehbarsFile.rehbars, toRehbar)
-export const scholarships: Scholarship[] = load(scholarshipsFile.scholarships, toScholarship)
+// MyRehbar only lists scholarships that Pakistani students can apply for.
+export const scholarships: Scholarship[] = load(scholarshipsFile.scholarships, toScholarship).filter((s) => s.openToPakistani)
 
 export const getRehbar = (slug: string | undefined) => rehbars.find((r) => r.slug === slug)
 export const getScholarship = (slug: string | undefined) => scholarships.find((s) => s.slug === slug)

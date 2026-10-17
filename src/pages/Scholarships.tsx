@@ -1,5 +1,7 @@
 import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { Info } from 'lucide-react'
+import { AskCta } from '../components/AskCta'
 import { PageHeader } from '../components/PageHeader'
 import { Section } from '../components/Section'
 import { ScholarshipCard } from '../components/ScholarshipCard'
@@ -13,8 +15,10 @@ import { useFilterParams } from '../hooks/useFilterParams'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { fmt, useI18n } from '../i18n'
 import type { LevelId, Scholarship } from '../types'
+import { CITIES, PROVINCES, provinceFor } from '../config/places'
 
-const LEVELS: LevelId[] = ['undergraduate', 'masters', 'phd', 'exchange']
+const LEVELS: LevelId[] = ['school', 'undergraduate', 'masters', 'phd', 'exchange']
+const inPakistan = (s: Scholarship) => s.country === 'Pakistan'
 
 /** Open deadlines first (soonest first), then unknown deadlines, then closed ones. */
 function byDeadline(a: Scholarship, b: Scholarship) {
@@ -32,23 +36,34 @@ export default function Scholarships() {
   const { t } = useI18n()
   usePageMeta(t.scholarships.title, t.scholarships.intro)
   const f = useFilterParams()
+  const clearFilters = () => {
+    const abroad = f.get('where') === 'abroad'
+    f.clear()
+    if (abroad) f.set('where', 'abroad')
+  }
 
+  // Two lists: studying in Pakistan (default) or abroad.
+  const where = f.get('where') === 'abroad' ? 'abroad' : 'pakistan'
+  const inTab = scholarships.filter((s) => (where === 'abroad' ? !inPakistan(s) : inPakistan(s)))
   const q = f.get('q')
   const level = f.get('level')
   const country = f.get('country')
+  const live = f.get('live') // a city, or "other:<province>"
+  const liveProvince = live ? provinceFor(live) : null
   const sort = f.get('sort') || 'deadline'
   const fullOnly = f.getBool('full')
-  const pakistaniOnly = f.getBool('pk')
   const upcomingOnly = f.getBool('upcoming')
 
-  const countries = uniqueSorted(scholarships.map((s) => s.country))
+  const countries = uniqueSorted(inTab.map((s) => s.country))
+  const levelsInTab = LEVELS.filter((l) => inTab.some((s) => s.levels.includes(l)))
 
   const results = useMemo(() => {
-    const list = scholarships.filter((s) => {
+    const list = inTab.filter((s) => {
       if (level && !s.levels.includes(level as LevelId)) return false
-      if (country && s.country !== country) return false
+      if (where === 'abroad' && country && s.country !== country) return false
+      // Province-only scholarships show only if you live in that province.
+      if (where === 'pakistan' && liveProvince && s.regions?.length && !s.regions.includes(liveProvince)) return false
       if (fullOnly && s.fundingType !== 'full') return false
-      if (pakistaniOnly && !s.openToPakistani) return false
       if (upcomingOnly) {
         const d = daysUntil(s.deadline)
         if (d === null || d < 0) return false
@@ -56,7 +71,7 @@ export default function Scholarships() {
       return matchesQuery(q, [s.name, s.provider, s.country, s.eligibility])
     })
     return list.sort(sort === 'name' ? (a, b) => a.name.localeCompare(b.name) : byDeadline)
-  }, [q, level, country, sort, fullOnly, pakistaniOnly, upcomingOnly])
+  }, [inTab, where, q, level, country, liveProvince, sort, fullOnly, upcomingOnly])
 
   return (
     <>
@@ -71,6 +86,42 @@ export default function Scholarships() {
       </PageHeader>
 
       <Section className="!pt-8 md:!pt-12">
+        <div role="tablist" aria-label={t.scholarships.tabsLabel} className="mb-2 grid grid-cols-2 gap-2 sm:inline-grid sm:w-auto">
+          {(['pakistan', 'abroad'] as const).map((key) => {
+            const active = where === key
+            return (
+              <button
+                key={key}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                // Switching tabs clears filters, since countries and levels differ between the two lists.
+                onClick={() => {
+                  f.clear()
+                  if (key === 'abroad') f.set('where', 'abroad')
+                }}
+                className={`min-h-[52px] rounded-xl border px-6 text-lg font-semibold transition duration-150 ${
+                  active ? 'border-mint-700 bg-mint-700 text-white' : 'border-line bg-white text-ink hover:bg-mint-50'
+                }`}
+              >
+                {key === 'pakistan' ? t.scholarships.tabPakistan : t.scholarships.tabAbroad}
+              </button>
+            )
+          })}
+        </div>
+        <p className="mb-6 max-w-2xl text-slate">
+          {where === 'pakistan' ? t.scholarships.introPakistan : t.scholarships.introAbroad}
+          {where === 'pakistan' && (
+            <>
+              {' '}
+              {t.scholarships.universityAidNote}{' '}
+              <Link to="/universities" className="font-semibold">
+                {t.scholarships.universityAidLink} →
+              </Link>
+            </>
+          )}
+        </p>
+        {where === 'pakistan' && <p className="mb-4 max-w-2xl text-sm text-slate">{t.scholarships.whereLiveNote}</p>}
         <FilterBar label={t.filters.filters}>
           <SearchInput
             value={q}
@@ -84,14 +135,40 @@ export default function Scholarships() {
               label={t.common.level}
               value={level}
               onChange={(v) => f.set('level', v)}
-              options={[{ value: '', label: t.filters.allLevels }, ...LEVELS.map((l) => ({ value: l, label: t.levels[l] }))]}
+              options={[{ value: '', label: t.filters.allLevels }, ...levelsInTab.map((l) => ({ value: l, label: t.levels[l] }))]}
             />
-            <FilterSelect
-              label={t.common.country}
-              value={country}
-              onChange={(v) => f.set('country', v)}
-              options={[{ value: '', label: t.filters.allCountries }, ...countries.map((c) => ({ value: c, label: c }))]}
-            />
+            {where === 'pakistan' ? (
+              <div className="flex flex-col gap-1">
+                <label htmlFor="where-live" className="text-sm font-semibold text-slate">
+                  {t.filters.whereLive}
+                </label>
+                <select
+                  id="where-live"
+                  value={live}
+                  onChange={(e) => f.set('live', e.target.value)}
+                  className="min-h-tap w-full rounded-xl border border-line bg-white px-3 text-base text-ink"
+                >
+                  <option value="">{t.filters.anywherePk}</option>
+                  {PROVINCES.map((p) => (
+                    <optgroup key={p} label={p}>
+                      {CITIES[p].map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      ))}
+                      {CITIES[p].length > 1 && <option value={`other:${p}`}>{fmt(t.filters.otherCityIn, { province: p })}</option>}
+                    </optgroup>
+                  ))}
+                </select>
+              </div>
+            ) : (
+              <FilterSelect
+                label={t.filters.studyIn}
+                value={country}
+                onChange={(v) => f.set('country', v)}
+                options={[{ value: '', label: t.filters.allCountries }, ...countries.map((c) => ({ value: c, label: c }))]}
+              />
+            )}
             <FilterSelect
               label={t.filters.sortBy}
               value={sort}
@@ -104,10 +181,9 @@ export default function Scholarships() {
           </div>
           <div className="mt-4 flex flex-wrap items-center gap-2">
             <FilterToggle label={t.filters.fullyFundedOnly} checked={fullOnly} onChange={(v) => f.set('full', v)} />
-            <FilterToggle label={t.filters.openForPakistani} checked={pakistaniOnly} onChange={(v) => f.set('pk', v)} />
             <FilterToggle label={t.filters.deadlineUpcoming} checked={upcomingOnly} onChange={(v) => f.set('upcoming', v)} />
-            {f.hasAny && (
-              <Button variant="ghost" size="sm" onClick={f.clear}>
+            {(q || level || country || live || f.get('sort') || fullOnly || upcomingOnly) && (
+              <Button variant="ghost" size="sm" onClick={clearFilters}>
                 {t.filters.clear}
               </Button>
             )}
@@ -129,10 +205,13 @@ export default function Scholarships() {
             <EmptyState
               title={t.empty.scholarshipsTitle}
               text={t.empty.scholarshipsText}
-              action={<Button onClick={f.clear}>{t.filters.clear}</Button>}
+              action={<Button onClick={clearFilters}>{t.filters.clear}</Button>}
             />
           </div>
         )}
+        <div className="mt-12">
+          <AskCta />
+        </div>
       </Section>
     </>
   )

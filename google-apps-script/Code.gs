@@ -190,3 +190,170 @@ function reply_(ok, error) {
   const payload = ok ? { ok: true } : { ok: false, error: error };
   return ContentService.createTextOutput(JSON.stringify(payload)).setMimeType(ContentService.MimeType.JSON);
 }
+
+/* ======================================================================
+ * Scholarship & university directory (copied INTO this sheet on demand)
+ * ======================================================================
+ *
+ * Adds a "MyRehbar" menu to the sheet. Click:
+ *   MyRehbar -> Update scholarships & universities
+ * to copy the latest data from the website into four tabs (they are replaced each time).
+ *
+ * - Runs ONLY when you click it. Nothing runs automatically.
+ * - Reads the same public data the website shows (myrehbar.org/data/*.json).
+ * - Never touches the form tabs (Students, Rehbar requests, Rehbar applications, Contact).
+ * - Does not change doPost: the form receiver stays write-only.
+ * - To change scholarships, edit src/data/*.json in the website project and push.
+ *   Editing these tabs does not change the website (and is overwritten on the next update).
+ */
+
+const DATA_BASE_URL = 'https://myrehbar.org/data/';
+
+const DIRECTORY_TABS = {
+  pakistan: 'Directory: Scholarships in Pakistan',
+  abroad: 'Directory: Scholarships abroad',
+  universities: 'Directory: Universities',
+  aid: 'Directory: University aid',
+};
+
+const LEVEL_LABELS = { school: 'School (Grade 9–12)', undergraduate: 'Undergraduate', masters: "Master's", phd: 'PhD', exchange: 'Exchange' };
+
+/** Runs when the sheet opens: adds the MyRehbar menu. */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('MyRehbar')
+    .addItem('Update scholarships & universities', 'updateDirectory')
+    .addToUi();
+}
+
+/** Copy scholarships and universities from the website into the Directory tabs. */
+function updateDirectory() {
+  const scholarships = fetchData_('scholarships.json').scholarships || [];
+  const universities = fetchData_('universities.json').universities || [];
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+
+  const scholarshipColumns = [
+    ['Name', function (s) { return s.name; }],
+    ['Provider', function (s) { return s.provider; }],
+    ['Study in', function (s) { return s.country; }],
+    ['Only for students from', function (s) { return (s.regions || []).join(', ') || 'Anywhere in Pakistan'; }],
+    ['Levels', function (s) { return (s.levels || []).map(function (l) { return LEVEL_LABELS[l] || l; }).join(', '); }],
+    ['Funding', function (s) { return s.fundingType === 'full' ? 'Fully funded' : 'Partial'; }],
+    ['Who can apply', function (s) { return s.eligibility; }],
+    ['What it pays for', function (s) { return lines_(s.covers); }],
+    ['Application window', function (s) { return s.applicationWindow; }],
+    ['Deadline', function (s) { return s.deadline; }],
+    ['How to apply', function (s) { return steps_(s.howToApply); }],
+    ['Official website', function (s) { return s.officialUrl; }],
+    ['Sources', function (s) { return lines_(s.sources); }],
+    ['Last verified', function (s) { return s.lastVerified || 'Not verified yet'; }],
+    ['MyRehbar page', function (s) { return 'https://myrehbar.org/scholarships/' + s.slug; }],
+  ];
+  const universityColumns = [
+    ['Short name', function (u) { return u.shortName; }],
+    ['Name', function (u) { return u.name; }],
+    ['City', function (u) { return u.city; }],
+    ['Province', function (u) { return u.province; }],
+    ['Public / private', function (u) { return u.sector; }],
+    ['Categories', function (u) { return (u.categories || []).join(', '); }],
+    ['Fee year', function (u) { return u.costs && u.costs.academicYear; }],
+    ['Tuition per year (PKR)', function (u) { return u.costs && u.costs.tuitionPerYear; }],
+    ['Hostel per year (PKR)', function (u) { return u.costs && u.costs.hostelPerYear; }],
+    ['Total with hostel (PKR)', function (u) { return u.costs && u.costs.tuitionPerYear && u.costs.hostelPerYear ? u.costs.tuitionPerYear + u.costs.hostelPerYear : ''; }],
+    ['Fee notes', function (u) { return u.costs && u.costs.otherNotes; }],
+    ['Hostel available', function (u) { return yesNo_(u.hostel && u.hostel.available); }],
+    ['Hostel notes', function (u) { return u.hostel && u.hostel.notes; }],
+    ['Aid programs', function (u) { return (u.aid || []).length; }],
+    ['Any aid covers hostel', function (u) { return (u.aid || []).some(function (a) { return a.coversHostel === true; }) ? 'Yes' : ''; }],
+    ['How to get in', function (u) { return steps_(u.admissionSteps); }],
+    ['Website', function (u) { return u.website; }],
+    ['Admissions page', function (u) { return u.admissionsUrl; }],
+    ['Financial aid page', function (u) { return u.financialAidUrl; }],
+    ['Fee page', function (u) { return u.feesUrl; }],
+    ['Last verified', function (u) { return u.lastVerified || 'Not verified yet'; }],
+    ['MyRehbar page', function (u) { return 'https://myrehbar.org/universities/' + u.slug; }],
+  ];
+  const aidRows = [];
+  universities.forEach(function (u) {
+    (u.aid || []).forEach(function (a) { aidRows.push({ aid: a, uni: u }); });
+  });
+  const aidColumns = [
+    ['University', function (r) { return r.uni.shortName || r.uni.name; }],
+    ['City', function (r) { return r.uni.city; }],
+    ['Aid program', function (r) { return r.aid.name; }],
+    ['Type', function (r) { return r.aid.type; }],
+    ['What it covers', function (r) { return lines_(r.aid.covers); }],
+    ['Covers hostel', function (r) { return yesNo_(r.aid.coversHostel); }],
+    ['How much', function (r) { return r.aid.amount; }],
+    ['Who can apply', function (r) { return r.aid.whoCanApply; }],
+    ['How to apply', function (r) { return steps_(r.aid.howToApply); }],
+    ['Official page', function (r) { return r.aid.sourceUrl; }],
+  ];
+
+  const inPakistan = scholarships.filter(function (s) { return s.country === 'Pakistan'; });
+  const abroad = scholarships.filter(function (s) { return s.country !== 'Pakistan'; });
+  writeDirectoryTab_(spreadsheet, DIRECTORY_TABS.pakistan, scholarshipColumns, inPakistan);
+  writeDirectoryTab_(spreadsheet, DIRECTORY_TABS.abroad, scholarshipColumns, abroad);
+  writeDirectoryTab_(spreadsheet, DIRECTORY_TABS.universities, universityColumns, universities);
+  writeDirectoryTab_(spreadsheet, DIRECTORY_TABS.aid, aidColumns, aidRows);
+
+  spreadsheet.toast(
+    inPakistan.length + ' in Pakistan, ' + abroad.length + ' abroad, ' + universities.length + ' universities, ' + aidRows.length + ' aid programs.',
+    'MyRehbar directory updated',
+    8,
+  );
+}
+
+function fetchData_(file) {
+  const response = UrlFetchApp.fetch(DATA_BASE_URL + file, { muteHttpExceptions: true, followRedirects: true });
+  if (response.getResponseCode() !== 200) {
+    throw new Error('Could not load ' + DATA_BASE_URL + file + ' (error ' + response.getResponseCode() + '). Is the website live?');
+  }
+  return JSON.parse(response.getContentText());
+}
+
+/** Replace a Directory tab's contents. Never used for the form tabs. */
+function writeDirectoryTab_(spreadsheet, name, columns, items) {
+  const formTabs = Object.keys(FORMS).map(function (id) { return FORMS[id].sheet; });
+  if (formTabs.indexOf(name) !== -1) throw new Error('Refusing to overwrite a form tab: ' + name);
+
+  let sheet = spreadsheet.getSheetByName(name);
+  if (!sheet) sheet = spreadsheet.insertSheet(name);
+  sheet.clearContents();
+
+  const rows = [columns.map(function (c) { return c[0]; })].concat(
+    items.map(function (item) {
+      return columns.map(function (c) { return cellValue_(c[1](item)); });
+    }),
+  );
+  sheet.getRange(1, 1, rows.length, columns.length).setValues(rows);
+  sheet.setFrozenRows(1);
+  sheet.getRange(1, 1, 1, columns.length).setFontWeight('bold');
+  sheet.getRange(1, 1).setNote(
+    'Copied from myrehbar.org on ' + new Date().toDateString() + '.\n' +
+    'Do not edit here: this tab is replaced by MyRehbar -> Update scholarships & universities.\n' +
+    'To change the data, edit src/data/*.json in the website project.'
+  );
+  // Warn (but don't block) anyone who tries to edit by hand.
+  const protections = sheet.getProtections(SpreadsheetApp.ProtectionType.SHEET);
+  if (protections.length === 0) sheet.protect().setDescription('Copied from the website: edits are overwritten').setWarningOnly(true);
+}
+
+/** Numbers stay numbers; text is cleaned with clean_ so it can never run as a formula. */
+function cellValue_(value) {
+  if (typeof value === 'number' && isFinite(value)) return value;
+  if (value === undefined || value === null || value === false) return '';
+  return clean_(String(value));
+}
+
+function lines_(list) {
+  return Array.isArray(list) ? list.filter(Boolean).join('\n') : '';
+}
+
+function steps_(list) {
+  return Array.isArray(list) ? list.map(function (s, i) { return (i + 1) + '. ' + s; }).join('\n') : '';
+}
+
+function yesNo_(value) {
+  return value === true ? 'Yes' : value === false ? 'No' : '';
+}

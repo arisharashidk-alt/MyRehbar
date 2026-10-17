@@ -5,7 +5,7 @@ import { Card } from './Card'
 import { Tag } from './Tag'
 import { Button } from './Button'
 import { DeadlineText, LastVerified } from './ScholarshipMeta'
-import { useI18n } from '../i18n'
+import { fmt, useI18n } from '../i18n'
 
 export function ScholarshipCard({ scholarship: s, headingLevel = 2 }: { scholarship: Scholarship; headingLevel?: 2 | 3 }) {
   const { t } = useI18n()
@@ -22,6 +22,9 @@ export function ScholarshipCard({ scholarship: s, headingLevel = 2 }: { scholars
           </Tag>
         ))}
       </div>
+      {s.regions && s.regions.length > 0 && (
+        <p className="mt-3 text-sm font-semibold text-mint-900">{fmt(t.scholarships.regionOnly, { regions: s.regions.join(' / ') })}</p>
+      )}
 
       <Heading className="mt-4 text-lg leading-snug">
         <Link to={`/scholarships/${s.slug}`} className="text-mint-900 no-underline hover:underline">

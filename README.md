@@ -41,6 +41,8 @@ src/
   data/
     rehbars.json    Mentors (edit this to add a Rehbar)
     scholarships.json
+    universities.json   Universities, costs and financial aid
+    universities.ts     Loads universities.json
     stats.ts        Impact numbers on the home page
     index.ts        Loads and cleans the JSON so bad entries never crash a page
   content/          The guides on /resources (one file per guide)
@@ -57,6 +59,9 @@ src/
 tailwind.config.js  Design tokens: every colour, font size and radius
 public/             favicon, OG image, robots.txt, sitemap.xml
 vercel.json         Deep links (/rehbars/…) + security headers
+scripts/
+  check.mjs         Link/scholarship checker you run by hand (npm run check)
+  watch-pages.json  Official pages watched for new scholarships
 google-apps-script/
   Code.gs           Paste into your Google Sheet; saves form answers
 design/             Original logo sheet (not used by the build)
@@ -87,12 +92,82 @@ If an entry is missing `slug` or `name`, it is skipped (with a warning in the br
 
 1. Open `src/data/scholarships.json`. **Verify every entry against the official website before publishing.**
 2. Copy an entry and fill it in:
-   - `levels`: any of `undergraduate`, `masters`, `phd`, `exchange`.
+   - `country`: `"Pakistan"` puts it under the **In Pakistan** tab; any other country puts it under **Abroad**.
+   - `levels`: any of `school`, `undergraduate`, `masters`, `phd`, `exchange`.
    - `fundingType`: `full` or `partial`.
    - `deadline`: `"YYYY-MM-DD"` or `null` if you don't know the exact date. It drives the **Nearest deadline** sort, the **Deadline coming up** filter and "x days left".
-   - `lastVerified`: the date you checked the official site, `"YYYY-MM-DD"`. It shows on every card.
+   - `sources`: the official pages where you checked the details. They show under "Where we checked this".
+   - `lastVerified`: set it with `npm run verify -- <slug>` after you've checked the official site (see section 4b).
    - `howToApply`: optional list of steps. If empty, a general checklist is shown.
-3. The five included entries are **samples**: the program names are real, but every detail is marked `TODO verify` and must be checked by you. Remove `"sample": true` once an entry is verified.
+
+## 4a. Add or edit a university
+
+Universities live in `src/data/universities.json` and show at `/universities`. Each one has official links, admission steps, financial aid programs (what each covers, who can apply, how to apply), and costs.
+
+- **Only use facts from the university's own website** (or HEC/PMDC), and list those pages in `sources`.
+- `costs.tuitionPerYear` / `costs.hostelPerYear` are per **year** in PKR, for the `academicYear` given. Leave them out if the official fee page doesn't say. The site then shows "check the official fee page" instead of a number.
+- For each aid program, set `coversHostel` to `true` or `false` only if the official page says so. These power the "Aid can cover hostel" filter.
+
+## 4b. Check that everything is still legit (run it yourself)
+
+The checker runs **only on your computer, only when you run it**. Nothing runs on a server or automatically.
+
+```bash
+npm run check
+```
+
+It visits every official link in the scholarships, universities and official-list data and tells you:
+
+| Symbol | Meaning | What to do |
+|---|---|---|
+| ❌ | A link is broken or keeps failing | Find the program's new official page and update the link |
+| ⚠️ | A page **changed** since your last run | Re-read it: dates, amounts or rules may have changed |
+| ⚠️ | A link now sends you to a **different website** | Make sure it's still the official site (an expired domain can be taken over) |
+| ⚠️ | The page no longer mentions the program's name | It may have moved or ended |
+| ⚠️ | A deadline in our data has passed | Update it to the next cycle, or set it to `null` |
+| ⚠️ | Nobody has checked the entry by hand for 90+ days | Re-read it, then verify (below) |
+| ★ | New links appeared on watched pages (e.g. HEC's scholarships page) | Possible new scholarships: check them before adding |
+| 📅 | Deadline-like dates it found on the official pages | Compare with our data |
+
+The full report is saved to `reports/check-YYYY-MM-DD.md`. Open it in VS Code and press **Cmd+Shift+V** for a readable view. Reports stay on your computer (they're in `.gitignore`).
+
+Some official sites block automated checks (e.g. PEC). The report marks those as "open it by hand"; that doesn't mean the link is broken.
+
+**After you've checked an entry by hand**, stamp today's date on it:
+
+```bash
+npm run verify -- chevening hec-need-based-scholarship
+```
+
+Then commit and push, and the site shows the new "Last verified" date.
+
+Options:
+- `npm run check -- --only scholarships` (or `universities`, `lists`) checks just one part.
+- To watch another listing page for new scholarships, add it to `scripts/watch-pages.json`.
+
+## 4c. Scholarships and universities in your Google Sheet
+
+Your MyRehbar Google Sheet (the one with the form responses) can show the scholarships and universities too, in four extra tabs:
+
+| Tab | What's in it |
+|---|---|
+| Directory: Scholarships in Pakistan | With the province each one is limited to |
+| Directory: Scholarships abroad | |
+| Directory: Universities | Fees (home vs hostel), hostel info, official links |
+| Directory: University aid | Every aid program at every university, one per row |
+
+**One-time setup** (after you update the script):
+1. Open the sheet → **Extensions → Apps Script**, replace everything with the latest [google-apps-script/Code.gs](google-apps-script/Code.gs), and click **Save**. You don't need a new deployment: the form link keeps working as it is.
+2. Reload the sheet. A **MyRehbar** menu appears at the top.
+
+**To update the tabs:** click **MyRehbar → Update scholarships & universities**. The first time, Google asks for permission to "connect to an external service"; that's the script reading `myrehbar.org/data/…`. Click **Allow**.
+
+- It copies whatever is **live on the website**, so push your changes first, then click Update.
+- It only runs when you click it.
+- The four Directory tabs are replaced each time, so don't edit them by hand (Google warns you if you try). To change the data, edit `src/data/*.json` (or ask Claude) and push.
+- It never touches the form tabs (Students, Rehbar requests, Rehbar applications, Contact), and it refuses to write to them.
+
+**Offline copy:** `npm run export` saves the same four tables as CSV files in `exports/` (kept on your computer), if you ever need them for another sheet or Excel.
 
 ## 5. Edit the guides (/resources)
 
@@ -233,7 +308,7 @@ No tracking is included. If you want simple, cookie-free visitor counts:
 
 - [ ] Set up the Google Sheet + Apps Script and paste the URL into `src/config/forms.ts` (section 7)
 - [ ] Replace sample Rehbars with real ones (with permission), or remove them
-- [ ] Verify every scholarship, set `lastVerified`, remove `sample`
+- [ ] Run `npm run check`, fix anything marked ❌, and verify entries by hand (`npm run verify -- <slug>`)
 - [ ] Review and un-draft the guides in `src/content/`
 - [ ] Add real impact numbers in `src/data/stats.ts` (or leave them hidden)
 - [ ] Contact email and social links in `src/config/site.ts`

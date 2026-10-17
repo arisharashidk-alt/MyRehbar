@@ -23,6 +23,7 @@ export function Header() {
   const links = [
     { to: '/rehbars', label: t.nav.rehbars },
     { to: '/scholarships', label: t.nav.scholarships },
+    { to: '/universities', label: t.nav.universities },
     { to: '/students', label: t.nav.students },
     { to: '/resources', label: t.nav.resources },
     { to: '/schools', label: t.nav.schools },
@@ -41,7 +42,7 @@ export function Header() {
           <Wordmark size={30} />
         </Link>
 
-        <nav aria-label={t.nav.mainNav} className="hidden lg:block">
+        <nav aria-label={t.nav.mainNav} className="hidden xl:block">
           <ul className="flex items-center gap-1 text-sm">
             {links.map((l) => (
               <li key={l.to}>
@@ -55,12 +56,12 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <LanguageToggle />
-          <Button to="/become-a-rehbar" size="sm" className="hidden lg:inline-flex">
+          <Button to="/become-a-rehbar" size="sm" className="hidden xl:inline-flex">
             {t.nav.becomeRehbar}
           </Button>
           <button
             type="button"
-            className="inline-flex min-h-tap min-w-tap items-center justify-center rounded-xl border border-line bg-white text-mint-900 lg:hidden"
+            className="inline-flex min-h-tap min-w-tap items-center justify-center rounded-xl border border-line bg-white text-mint-900 xl:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((o) => !o)}
@@ -72,7 +73,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-menu" aria-label={t.nav.mainNav} className="border-t border-line bg-paper lg:hidden">
+        <nav id="mobile-menu" aria-label={t.nav.mainNav} className="border-t border-line bg-paper xl:hidden">
           <ul className="container-page flex flex-col gap-1 py-4 text-lg">
             {[...links, { to: '/contact', label: t.nav.contact }].map((l) => (
               <li key={l.to}>

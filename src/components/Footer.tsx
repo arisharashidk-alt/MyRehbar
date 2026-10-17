@@ -10,6 +10,7 @@ export function Footer() {
   const links = [
     { to: '/rehbars', label: t.nav.rehbars },
     { to: '/scholarships', label: t.nav.scholarships },
+    { to: '/universities', label: t.nav.universities },
     { to: '/students', label: t.nav.students },
     { to: '/become-a-rehbar', label: t.nav.becomeRehbar },
     { to: '/resources', label: t.nav.resources },
