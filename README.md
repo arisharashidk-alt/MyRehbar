@@ -37,6 +37,7 @@ Notes that only show in `npm run dev` (never on the live site) point to things y
 src/
   config/
     forms.ts        The one form link (your Apps Script URL)
+    tracker.ts      The application tracker link (a second Apps Script URL)
     site.ts         Domain, contact email, social links
   data/
     rehbars.json    Mentors (edit this to add a Rehbar)
@@ -53,6 +54,13 @@ src/
   i18n/
     en.ts           All English text on the site
     ur.ts           Urdu text (same keys)
+  tracker/          The application tracker: data shape, plan builder, saving, Excel export
+    session.ts      The login kept in the browser (token + email only)
+    crypto.ts       Turns the password into a key; the password never leaves the browser
+    model.ts        The tracker's shape, and checks for everything loaded from the server
+    plan.ts         Builds each application's steps and dates; calendar colours
+    text.ts         Text for /login and /tracker (English + Urdu)
+    components/     Table, calendar, softboard, tests and account views
   components/       Reusable UI (Button, Card, Tag, FilterBar, MyRehbarForm, Logo, …)
   pages/            One file per page
   types.ts          Rehbar, Scholarship and Resource types
@@ -65,6 +73,7 @@ scripts/
   watch-pages.json  Official pages watched for new scholarships
 google-apps-script/
   Code.gs           Paste into your Google Sheet; saves form answers
+  Tracker.gs        A separate Apps Script for tracker logins and saved trackers (section 7a)
 design/             Original logo sheet (not used by the build)
 ```
 
@@ -245,6 +254,50 @@ If you add a column to an existing tab, add the header in the sheet by hand too,
 - Delete answers you no longer need. If someone asks you to delete their data, delete their row.
 - If you think the script URL is being abused (lots of spam), create a **new deployment** in Apps Script, paste the new URL into `forms.ts`, and archive the old deployment.
 
+## 7a. Application tracker (logins)
+
+Students can create a free account and plan their master's and scholarship applications at **/tracker**: a table with their own columns, a step-by-step plan with dates for each application (SOP, recommendation letters, IELTS/GRE, documents, uni-assist/VPD…), a colour-coded calendar, a softboard with sticky notes and threads, and an Excel download of everything. Logins and trackers are saved in the same private Google Sheet as the forms, in three new tabs.
+
+### How it works
+
+```
+Browser (/login, /tracker) ──HTTPS──▶ Tracker Apps Script (a SECOND script) ──▶ same private Google Sheet
+                                      Tracker accounts · Tracker sessions · Tracker data
+```
+
+- It is a **separate** Apps Script ([google-apps-script/Tracker.gs](google-apps-script/Tracker.gs)) with its own URL. The forms script (`Code.gs`) is unchanged and stays write-only.
+- **Passwords never leave the browser.** The site turns the password into a key with PBKDF2-SHA256 (600,000 rounds, [src/tracker/crypto.ts](src/tracker/crypto.ts)). The script stores only an HMAC of that key with a random salt per account and a secret "pepper" kept in Script Properties, not in the sheet. Someone with a copy of the sheet alone cannot test passwords.
+- **Login tokens** are random (244 bits). The sheet stores only their SHA-256 hash. They expire after 12 hours, or 30 days with "keep me logged in". A password reset logs out every device; each person can be logged in on at most 10 devices.
+- **Email codes** confirm new accounts and password resets: 6 digits, 15 minutes, 5 tries. Errors never reveal whether an email has an account.
+- **Limits:** 5 wrong passwords lock that email for 15 minutes; one email per address per minute (5 a day, 80 a day in total); 120 requests a minute overall; 20 saves a minute per person; 1.5 MB per tracker.
+- **Saving:** each tracker is one row in "Tracker data", as JSON spread over a few cells. Every save carries a version number, so two tabs or devices never silently overwrite each other: the person is asked which copy to keep. Unsaved changes are kept in the browser until the server confirms them.
+- **Safety in the sheet:** nothing the script writes can run as a formula. Logs never contain emails, passwords or tracker data.
+- **People control their data:** the Account tab downloads everything as `.xlsx` (made in the browser, no extra library) and deletes the account and tracker (needs the password).
+
+### Set it up (about 10 minutes, once)
+
+1. Go to [script.google.com](https://script.google.com) → **New project**. Name it "MyRehbar tracker". Delete everything in `Code.gs` and paste the whole of [google-apps-script/Tracker.gs](google-apps-script/Tracker.gs). Click **Save**.
+2. Copy your sheet's ID: it is the long part of the sheet's address between `/d/` and `/edit`. In the script, open **Project Settings** (⚙️) → **Script Properties** → **Add script property**: name `SHEET_ID`, value the ID. **Save**. (The ID stays in Apps Script. Never put it in this project.)
+3. Back in the editor, choose **setupTracker** in the function menu and click **Run**. Allow the permissions it asks for (the sheet, sending email, and a daily clean-up trigger). It creates the three tabs and the secret pepper.
+4. **Deploy → New deployment → ⚙️ → Web app**. Description "MyRehbar tracker", **Execute as: Me**, **Who has access: Anyone**. Click **Deploy** and copy the **Web app URL**.
+5. Paste it into [src/config/tracker.ts](src/config/tracker.ts):
+   ```ts
+   export const TRACKER_ENDPOINT = 'https://script.google.com/macros/s/AKfycb…/exec'
+   ```
+6. Push. Open `/tracker` on the live site, create an account with your own email, and check that the code arrives (look in spam the first time).
+
+Until step 5 is done, `/login` shows "not switched on yet" and nothing is sent anywhere.
+
+After you change `Tracker.gs`, publish a new version: **Deploy → Manage deployments → ✏️ → Version: New version → Deploy**.
+
+### Keeping accounts safe
+
+- **Never change or delete the `TRACKER_PEPPER` script property.** Every password would stop working. Don't copy it anywhere.
+- Don't edit the three Tracker tabs by hand (they show a warning if you try). To remove someone, ask them to use **Delete my account**, or delete their rows in all three tabs.
+- Only share the Apps Script project with people who already have access to the sheet.
+- If you ever think the sheet has leaked: in Script Properties, set `TRACKER_PEPPER` to a new long random value and redeploy. Every login and password stops working, and everyone sets a new password with **Forgot password**.
+- A free Google account can send about 100 emails a day. If lots of people sign up at once, codes may stop arriving until the next day.
+
 ## 8. Deploy free on Vercel
 
 1. **Push to GitHub.**
@@ -320,7 +373,7 @@ Search Console then shows which searches find you, how often you appear, and how
 - Replace the whole string, including `TODO-UR: `, with your Urdu text.
 - Keep `{count}`, `{name}`, `{date}` and `{year}` placeholders as they are. The code fills them in.
 - Rehbar profiles, scholarship entries and guides are English-only for now (they come from the data files).
-- Switching to Urdu sets `<html lang="ur" dir="rtl">` and loads the Noto Nastaliq Urdu font on demand, so English-only visitors never download it. The only thing the site stores in the browser is this language choice.
+- Switching to Urdu sets `<html lang="ur" dir="rtl">` and loads the Noto Nastaliq Urdu font on demand, so English-only visitors never download it. Apart from this language choice, the site only stores something in the browser for people who log in to the application tracker (their login, and changes not yet saved).
 
 ---
 
@@ -333,7 +386,9 @@ Search Console then shows which searches find you, how often you appear, and how
 - [ ] Add real impact numbers in `src/data/stats.ts` (or leave them hidden)
 - [ ] Contact email and social links in `src/config/site.ts`
 - [ ] Review the Urdu strings in `src/i18n/ur.ts`
-- [ ] Re-check `/privacy` matches what your forms actually collect
+- [ ] Set up the tracker Apps Script and paste its URL into `src/config/tracker.ts` (section 7a), then create a test account
+- [ ] Review the tracker's Urdu text in `src/tracker/text.ts`
+- [ ] Re-check `/privacy` matches what your forms and the tracker actually collect
 
 ---
 
@@ -342,5 +397,5 @@ Search Console then shows which searches find you, how often you appear, and how
 The code is set up so these can be added without a rewrite:
 
 - **A real database** (e.g. Supabase free tier): replace the imports in `src/data/index.ts` with fetch calls. Pages use only `rehbars`, `scholarships`, `getRehbar` and `getScholarship`, so the change stays in one file.
-- **Logins and dashboards:** add routes in `src/App.tsx`. The `Layout` already wraps every page.
+- **Moving the tracker off Google Sheets** (if it outgrows a free Google account): only `src/tracker/api.ts` talks to the server, so a real database can replace `Tracker.gs` without touching the pages.
 - **Automatic matching and session booking:** `src/forms/submit.ts` is the only place answers are sent, so it can point at a real backend later.

@@ -29,6 +29,8 @@ interface PageMeta {
   jsonLd?: object[]
   /** Leave out of the sitemap (e.g. form-only pages) */
   noSitemap?: boolean
+  /** Ask search engines not to list this page (private pages such as login) */
+  noindex?: boolean
 }
 
 type Raw = Record<string, unknown>
@@ -68,6 +70,8 @@ function pages(): PageMeta[] {
     { path: '/contact', title: en.contact.title, description: en.contact.intro },
     { path: '/privacy', title: en.privacy.title, description: en.privacy.intro },
     { path: '/request', title: 'Request a Rehbar', description: en.rehbars.requestNote, noSitemap: true },
+    { path: '/login', title: 'Log in to your application tracker', description: en.home.trackerText, noSitemap: true, noindex: true },
+    { path: '/tracker', title: 'My application tracker', description: en.home.trackerText, noSitemap: true, noindex: true },
   ]
 
   for (const s of (scholarshipsFile.scholarships ?? []) as Raw[]) {
@@ -137,6 +141,7 @@ function pageHtml(template: string, page: PageMeta): string {
     .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`)
     .replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${title}$2`)
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${description}$2`)
+  if (page.noindex) html = html.replace('<meta charset="UTF-8" />', '<meta charset="UTF-8" />\n    <meta name="robots" content="noindex" />')
   if (page.jsonLd?.length) {
     const scripts = page.jsonLd.map((d) => `<script type="application/ld+json">${jsonForScript(d)}</script>`).join('\n    ')
     html = html.replace('</head>', `    ${scripts}\n  </head>`)
@@ -173,8 +178,7 @@ export function seoPages(): Plugin {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap(list) })
       // Vercel serves 404.html (with a 404 status) for any address that has no page.
       // It loads the same app, which shows the friendly "page not found" screen.
-      const notFound = pageHtml(template, { path: '/404', title: en.notFound.title, description: en.notFound.text })
-        .replace('<meta charset="UTF-8" />', '<meta charset="UTF-8" />\n    <meta name="robots" content="noindex" />')
+      const notFound = pageHtml(template, { path: '/404', title: en.notFound.title, description: en.notFound.text, noindex: true })
       this.emitFile({ type: 'asset', fileName: '404.html', source: notFound })
     },
   }

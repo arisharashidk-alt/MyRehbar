@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { ListChecks, Menu, X } from 'lucide-react'
 import { Wordmark } from './Logo'
 import { LanguageToggle } from './LanguageToggle'
 import { Button } from './Button'
 import { useI18n } from '../i18n'
+import { useSession } from '../tracker/session'
 
 export function Header() {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
   const location = useLocation()
+  const session = useSession()
+  const trackerLabel = session ? t.nav.myTracker : t.nav.tracker
 
   // Close the mobile menu when the page changes or Escape is pressed.
   useEffect(() => setOpen(false), [location.pathname])
@@ -56,6 +59,19 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <LanguageToggle />
+          {/* Icon only until there is room for the words, so the main menu never wraps. */}
+          <NavLink
+            to="/tracker"
+            title={trackerLabel}
+            className={({ isActive }) =>
+              `hidden min-h-tap min-w-tap items-center justify-center gap-2 rounded-xl border border-line px-2 text-sm font-semibold no-underline transition duration-150 xl:inline-flex 2xl:px-3 ${
+                isActive ? 'bg-mint-50 text-mint-900' : 'bg-white text-mint-900 hover:border-mint-700'
+              }`
+            }
+          >
+            <ListChecks aria-hidden size={20} strokeWidth={1.5} />
+            <span className="sr-only 2xl:not-sr-only">{trackerLabel}</span>
+          </NavLink>
           <Button to="/become-a-rehbar" size="sm" className="hidden xl:inline-flex">
             {t.nav.becomeRehbar}
           </Button>
@@ -75,7 +91,7 @@ export function Header() {
       {open && (
         <nav id="mobile-menu" aria-label={t.nav.mainNav} className="border-t border-line bg-paper xl:hidden">
           <ul className="container-page flex flex-col gap-1 py-4 text-lg">
-            {[...links, { to: '/contact', label: t.nav.contact }].map((l) => (
+            {[...links, { to: '/contact', label: t.nav.contact }, { to: '/tracker', label: trackerLabel }].map((l) => (
               <li key={l.to}>
                 <NavLink to={l.to} className={linkClass}>
                   {l.label}

@@ -19,6 +19,8 @@ const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Request = lazy(() => import('./pages/Request'))
 const Privacy = lazy(() => import('./pages/Privacy'))
+const Login = lazy(() => import('./pages/Login'))
+const Tracker = lazy(() => import('./pages/Tracker'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 export default function App() {
@@ -41,6 +43,8 @@ export default function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="request" element={<Request />} />
         <Route path="privacy" element={<Privacy />} />
+        <Route path="login" element={<Login />} />
+        <Route path="tracker" element={<Tracker />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

@@ -11,6 +11,7 @@ import { getScholarship } from '../data'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { fmt, useI18n } from '../i18n'
 import { AskCta } from '../components/AskCta'
+import { AddToTracker } from '../components/TrackerCta'
 
 function Fact({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -144,6 +145,7 @@ export default function ScholarshipDetail() {
                 {t.common.officialWebsite}
               </Button>
             )}
+            <AddToTracker type="scholarship" slug={s.slug} className="mt-3" />
             <div className="mt-4 text-sm text-slate">
               <LastVerified date={s.lastVerified} />
             </div>

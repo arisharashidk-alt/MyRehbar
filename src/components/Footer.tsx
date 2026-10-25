@@ -17,6 +17,7 @@ export function Footer() {
     { to: '/schools', label: t.nav.schools },
     { to: '/about', label: t.nav.about },
     { to: '/contact', label: t.nav.contact },
+    { to: '/tracker', label: t.nav.tracker },
   ]
 
   return (

@@ -78,6 +78,16 @@
   .prose-simple ol {
     @apply mb-4 list-decimal space-y-2 ps-6 text-lg;
   }
+
+  /* Application tracker softboard: a cork texture made only with gradients. */
+  .cork-board {
+    background-color: theme('colors.cork.DEFAULT');
+    background-image:
+      radial-gradient(theme('colors.cork.dark') 1px, transparent 1.5px),
+      radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1.5px);
+    background-size: 14px 14px, 23px 23px;
+    background-position: 0 0, 7px 11px;
+  }
 }
 
 /* Subtle motion only, and none at all if the person asked for reduced motion. */

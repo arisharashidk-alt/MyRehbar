@@ -34,6 +34,18 @@ export default {
         DEFAULT: '#B42318',
         50: '#FEF3F2',
       },
+      // Application tracker only: deadline urgency and application colours.
+      // Each 700 passes WCAG AA as text on its own 50.
+      red: { 50: '#FEF3F2', 200: '#FECDCA', 700: '#B42318' },
+      orange: { 50: '#FFF6ED', 200: '#FDDCAB', 700: '#B54708' },
+      amber: { 50: '#FEFBE8', 200: '#FDE272', 700: '#854A0E' },
+      blue: { 50: '#EFF8FF', 200: '#B2DDFF', 700: '#175CD3' },
+      violet: { 50: '#F4F3FF', 200: '#D9D6FE', 700: '#5925DC' },
+      pink: { 50: '#FDF2FA', 200: '#FCCEEE', 700: '#C11574' },
+      // Softboard: sticky notes, cork and red thread.
+      note: { yellow: '#FFF3A6', pink: '#FFD9DF', blue: '#D6E9FF', green: '#D3F2E3' },
+      cork: { DEFAULT: '#C9A47A', dark: '#A98258' },
+      thread: '#C0392B',
     },
     // Type scale: 14 / 16 / 18 / 24 / 32 / 48
     fontSize: {

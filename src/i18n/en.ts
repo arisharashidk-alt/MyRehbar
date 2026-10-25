@@ -46,6 +46,8 @@ const en = {
     about: 'About',
     contact: 'Contact',
     privacy: 'Privacy',
+    tracker: 'Application tracker',
+    myTracker: 'My tracker',
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     mainNav: 'Main',
@@ -84,6 +86,8 @@ const en = {
     backToGuides: 'All guides',
     minutesRead: '{count} min read',
     seeAllRehbars: 'See all Rehbars',
+    addToTracker: 'Add to my tracker',
+    trackTeaser: 'Applying? Keep this deadline, and every step before it, in your free application tracker.',
     seeAllScholarships: 'See all scholarships',
     free: 'Free',
   },
@@ -313,6 +317,12 @@ const en = {
     finalTitle: 'Your future is not decided by your bank balance.',
     finalText: 'Talk to a Rehbar. It is free, and it could change everything.',
     finalCta: 'Find a Rehbar',
+    trackerEyebrow: 'Free for students',
+    trackerTitle: 'Applying for a master’s or a scholarship?',
+    trackerText:
+      'Keep every deadline, document and SOP draft in one private tracker. Add a programme and it builds a step-by-step plan with dates for you.',
+    trackerPoints: ['A calendar that warns you before deadlines', 'Steps for your SOP, recommendation letters and tests', 'Download everything as an Excel file'],
+    trackerCta: 'Start your free tracker',
   },
 
   stats: {
@@ -641,7 +651,7 @@ const en = {
     sections: [
       {
         heading: 'What we collect',
-        text: 'This website does not have accounts and does not save anything about you. When you fill in one of our forms, we collect only what you type into that form, such as your name, city, school and how to contact you.',
+        text: 'You can use this website without an account, and it does not save anything about you. When you fill in one of our forms, we collect only what you type into that form, such as your name, city, school and how to contact you. If you create an application tracker account, we also keep your email address and what you put in your tracker.',
       },
       {
         heading: 'Where it goes',
@@ -650,6 +660,10 @@ const en = {
       {
         heading: 'How we use it',
         text: 'We use your answers only to match you with a Rehbar and to contact you about MyRehbar. We never sell your data, and we never share it with advertisers.',
+      },
+      {
+        heading: 'Application tracker accounts',
+        text: 'The tracker is optional. We save your email, a scrambled version of your password (never the password itself) and your tracker in the same private Google Sheet, which only our team can open. We use your email only to send login codes and password resets. Your browser keeps your login, and any changes not yet saved, until you log out. You can download all your tracker data as an Excel file, or delete your account and data yourself, at any time from the tracker’s Account tab.',
       },
       {
         heading: 'Rehbars’ contact details',
@@ -661,11 +675,11 @@ const en = {
       },
       {
         heading: 'Cookies and visitor counts',
-        text: 'This website uses no cookies and no advertising trackers. We count visits with Vercel Web Analytics, which records which pages are viewed and the type of device, but not who you are and not what you type. Your browser only remembers your language choice (English or Urdu).',
+        text: 'This website uses no cookies and no advertising trackers. We count visits with Vercel Web Analytics, which records which pages are viewed and the type of device, but not who you are and not what you type. Your browser only remembers your language choice (English or Urdu) and, if you use the application tracker, your login.',
       },
       {
         heading: 'Delete your data',
-        text: 'You can ask us to delete your form answers at any time. Email teammyrehbar@gmail.com or use the contact form, and we will do it.',
+        text: 'You can ask us to delete your form answers at any time. Email teammyrehbar@gmail.com or use the contact form, and we will do it. You can delete a tracker account and all its data yourself, from the tracker’s Account tab.',
       },
     ],
   },
@@ -675,7 +689,7 @@ const en = {
     social: 'Follow us',
     madeIn: 'Made in Karachi',
     email: 'Email us',
-    privacyNote: 'No accounts, no cookies, no ad tracking. Form answers go to a private sheet only our team can see.',
+    privacyNote: 'No cookies, no ad tracking. Form answers and tracker accounts go to a private sheet only our team can see.',
     privacyLink: 'Read our privacy note',
     rights: '© {year} MyRehbar',
   },

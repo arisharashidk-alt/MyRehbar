@@ -7,6 +7,7 @@ import { RehbarCard } from '../components/RehbarCard'
 import { StatCard } from '../components/StatCard'
 import { FounderStory } from '../components/FounderStory'
 import { HeroDecor } from '../components/Decor'
+import { TrackerTeaser } from '../components/TrackerCta'
 import { pickFeatured, rehbars, scholarships } from '../data'
 import { stats } from '../data/stats'
 import { useI18n } from '../i18n'
@@ -96,6 +97,7 @@ export default function Home() {
               <ScholarshipCard key={s.slug} scholarship={s} headingLevel={3} />
             ))}
           </div>
+          <TrackerTeaser />
         </Section>
       )}
 

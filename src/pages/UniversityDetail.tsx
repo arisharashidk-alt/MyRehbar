@@ -7,6 +7,7 @@ import { Button } from '../components/Button'
 import { StepList } from '../components/CheckList'
 import { EmptyState } from '../components/EmptyState'
 import { AskCta } from '../components/AskCta'
+import { AddToTracker } from '../components/TrackerCta'
 import { LastVerified } from '../components/ScholarshipMeta'
 import { costTotals, getUniversity } from '../data/universities'
 import { usePageMeta } from '../hooks/usePageMeta'
@@ -125,6 +126,9 @@ export default function UniversityDetail() {
         <OfficialLink href={uni.admissionsUrl}>{d.admissions}</OfficialLink>
         <OfficialLink href={uni.financialAidUrl}>{d.aidPage}</OfficialLink>
         <OfficialLink href={uni.feesUrl}>{d.feesPage}</OfficialLink>
+      </div>
+      <div className="mt-4 max-w-md">
+        <AddToTracker type="university" slug={uni.slug} className="sm:w-auto" />
       </div>
 
       {/* Cost: home vs hostel */}

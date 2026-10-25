@@ -49,6 +49,8 @@ const ur: Dictionary = {
     about: 'ہمارے بارے میں',
     contact: 'رابطہ',
     privacy: 'رازداری',
+    tracker: 'ایپلیکیشن ٹریکر',
+    myTracker: 'میرا ٹریکر',
     openMenu: 'مینو کھولیں',
     closeMenu: 'مینو بند کریں',
     mainNav: 'مرکزی',
@@ -87,6 +89,8 @@ const ur: Dictionary = {
     backToGuides: 'تمام رہنمائی',
     minutesRead: '{count} منٹ',
     seeAllRehbars: 'تمام رہبر دیکھیں',
+    addToTracker: 'میرے ٹریکر میں شامل کریں',
+    trackTeaser: 'TODO-UR: Applying? Keep this deadline, and every step before it, in your free application tracker.',
     seeAllScholarships: 'تمام اسکالرشپس دیکھیں',
     free: 'مفت',
   },
@@ -328,6 +332,16 @@ const ur: Dictionary = {
     finalTitle: 'TODO-UR: Your future is not decided by your bank balance.',
     finalText: 'TODO-UR: Talk to a Rehbar. It is free, and it could change everything.',
     finalCta: 'رہبر تلاش کریں',
+    trackerEyebrow: 'طلبہ کے لیے مفت',
+    trackerTitle: 'TODO-UR: Applying for a master’s or a scholarship?',
+    trackerText:
+      'TODO-UR: Keep every deadline, document and SOP draft in one private tracker. Add a programme and it builds a step-by-step plan with dates for you.',
+    trackerPoints: [
+      'TODO-UR: A calendar that warns you before deadlines',
+      'TODO-UR: Steps for your SOP, recommendation letters and tests',
+      'TODO-UR: Download everything as an Excel file',
+    ],
+    trackerCta: 'اپنا مفت ٹریکر شروع کریں',
   },
 
   stats: {
@@ -663,7 +677,7 @@ const ur: Dictionary = {
     sections: [
       {
         heading: 'ہم کیا جمع کرتے ہیں',
-        text: 'TODO-UR: This website does not have accounts and does not save anything about you. When you fill in one of our forms, we collect only what you type into that form, such as your name, city, school and how to contact you.',
+        text: 'TODO-UR: You can use this website without an account, and it does not save anything about you. When you fill in one of our forms, we collect only what you type into that form, such as your name, city, school and how to contact you. If you create an application tracker account, we also keep your email address and what you put in your tracker.',
       },
       {
         heading: 'معلومات کہاں جاتی ہیں',
@@ -672,6 +686,10 @@ const ur: Dictionary = {
       {
         heading: 'ہم اسے کیسے استعمال کرتے ہیں',
         text: 'TODO-UR: We use your answers only to match you with a Rehbar and to contact you about MyRehbar. We never sell your data, and we never share it with advertisers.',
+      },
+      {
+        heading: 'ایپلیکیشن ٹریکر اکاؤنٹس',
+        text: 'TODO-UR: The tracker is optional. We save your email, a scrambled version of your password (never the password itself) and your tracker in the same private Google Sheet, which only our team can open. We use your email only to send login codes and password resets. Your browser keeps your login, and any changes not yet saved, until you log out. You can download all your tracker data as an Excel file, or delete your account and data yourself, at any time from the tracker’s Account tab.',
       },
       {
         heading: 'رہبروں کی رابطہ معلومات',
@@ -683,11 +701,11 @@ const ur: Dictionary = {
       },
       {
         heading: 'کوکیز اور وزٹرز کی گنتی',
-        text: 'TODO-UR: This website uses no cookies and no advertising trackers. We count visits with Vercel Web Analytics, which records which pages are viewed and the type of device, but not who you are and not what you type. Your browser only remembers your language choice (English or Urdu).',
+        text: 'TODO-UR: This website uses no cookies and no advertising trackers. We count visits with Vercel Web Analytics, which records which pages are viewed and the type of device, but not who you are and not what you type. Your browser only remembers your language choice (English or Urdu) and, if you use the application tracker, your login.',
       },
       {
         heading: 'اپنا ڈیٹا حذف کروائیں',
-        text: 'TODO-UR: You can ask us to delete your form answers at any time. Email teammyrehbar@gmail.com or use the contact form, and we will do it.',
+        text: 'TODO-UR: You can ask us to delete your form answers at any time. Email teammyrehbar@gmail.com or use the contact form, and we will do it. You can delete a tracker account and all its data yourself, from the tracker’s Account tab.',
       },
     ],
   },
@@ -697,7 +715,7 @@ const ur: Dictionary = {
     social: 'ہمیں فالو کریں',
     madeIn: 'کراچی میں بنایا گیا',
     email: 'ہمیں ای میل کریں',
-    privacyNote: 'TODO-UR: No accounts, no cookies, no ad tracking. Form answers go to a private sheet only our team can see.',
+    privacyNote: 'TODO-UR: No cookies, no ad tracking. Form answers and tracker accounts go to a private sheet only our team can see.',
     privacyLink: 'ہمارا رازداری نوٹ پڑھیں',
     rights: '© {year} مائی رہبر',
   },
